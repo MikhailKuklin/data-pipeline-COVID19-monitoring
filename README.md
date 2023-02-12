@@ -6,6 +6,7 @@ WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data
 ### Initial set up in Google Cloud Platform (GCP)
 
 *Step 1* Create a new project in GCP (in https://console.cloud.google.com/)
+
 *Step 2* Create a virtual machine (VM) in GCP
   
   *2.1* Compute Engine -> VM instances -> enable Compute Engine API -> Create instance
