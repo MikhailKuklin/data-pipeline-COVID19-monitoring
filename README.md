@@ -70,5 +70,3 @@ sftp de-zoomcamp #connect to the server
 mkdir .gc # create directory
 put de_project.json # copy json file
 
-
-
