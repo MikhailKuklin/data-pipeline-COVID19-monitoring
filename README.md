@@ -21,4 +21,4 @@ WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data
 
 For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
 
-For Windows, look for more details here: ![Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
+For Windows, look for more details here: [Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
