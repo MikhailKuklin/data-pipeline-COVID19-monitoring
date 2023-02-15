@@ -25,9 +25,9 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
   - E2, e2-standard-4 (4 vCPU, 16 GB memory) as series/machine type
   - Ubuntu 20.04 LTS, 30GB for Boot Disc
 
-*Step 4* Configure instance
+(Optional) *Step 4* Configure instance
 
-(Optional) *4.1* To simplify the process, it is suggested to install [Anaconda package management] (https://www.anaconda.com/products/distribution)
+*4.1* To simplify the process, it is suggested to install [Anaconda package management] (https://www.anaconda.com/products/distribution)
 
 Go to the bottom of the page and choose version for Linux, x86 architecture (that's what has been chosen for VM instance):
 
@@ -37,5 +37,22 @@ wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 bash Anaconda3-2022.10-Linux-x86_64.sh
 ```
 
+*4.2* Create config file on the PC to config access to the server (to avoid command to enter the VM)
+
+
+Create a file ~/.ssh/config:
+
+```sh
+Host de-zoomcamp # name of the VM
+        Hostname 35.228.114.109 # external IP of the VM
+        User mikhail # user name which was used to generate the ssh key
+        IdentityFile ~/.ssh/gcp # path to the ssh key. Note that it has to be absolute path for Windows
+```
+
+Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it is: `ssh -i ~/.ssh/gcp de-zoomcamp`)
+
+*Step 5* Clone the repo
+
+`git clone URL`
 
 
