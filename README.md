@@ -31,7 +31,7 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
 
 Go to the bottom of the page and choose version for Linux, x86 architecture (that's what has been chosen for VM instance):
 
-sh```
+```sh
 wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 
 bash Anaconda3-2022.10-Linux-x86_64.sh
