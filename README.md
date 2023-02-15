@@ -59,7 +59,11 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
 
 [Link to Terraform](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
 
-Choose Linux/Ubuntu version, copy the link, and download to the VM with ´wget´.
+Choose Linux/Ubuntu version (AMD64 architecture), copy the link, and download to the VM with ´wget´:
+
+`wget https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip`
+
+Don't forget to unzip it next.
 
 TODO Describe creating credentials json file for terraform
 
