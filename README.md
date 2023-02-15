@@ -55,4 +55,11 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 
 `git clone URL`
 
+*Step 6* [Download Terraform] (https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
+
+Choose Linux/Ubuntu version, copy the link, and download to the VM with ´wget´.
+
+
+
+
 
