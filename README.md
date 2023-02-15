@@ -65,8 +65,15 @@ Choose Linux/Ubuntu version (AMD64 architecture), copy the link, and download to
 
 Don't forget to unzip it next.
 
-TODO Describe creating credentials json file for terraform
+### *Step 7* GCP setup for Terraform
 
+Service account has to be created for Terraform to give it the credentials to required services in GCP.
+
+  *7.1* Go to GCP -> IAM & Admin -> Service Account -> Create Service Account
+  *7.2* Follow the instructions and in the `Role` box choose `Viewer` and then choose `Done`
+  *7.3* Actions -> Manage keys -> Create new key (JSON)
+  *7.4* add export... CONTINUE FROM HERE
+  
 To add generated json file to the server, one can use `sftp`: 
 
 ```sh
