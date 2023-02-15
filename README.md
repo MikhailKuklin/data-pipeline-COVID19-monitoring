@@ -55,11 +55,20 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
 
 `git clone URL`
 
-### *Step 6* [Download Terraform] (https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
+### *Step 6* Download Terraform 
+
+[Link to Terraform](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
 
 Choose Linux/Ubuntu version, copy the link, and download to the VM with ´wget´.
 
-TODO Describe creating json file for terraform
+TODO Describe creating credentials json file for terraform
+
+To add generated json file to the server, one can use `sftp`: 
+
+```sh
+sftp de-zoomcamp #connect to the server
+mkdir .gc # create directory
+put de_project.json # copy json file
 
 
 
