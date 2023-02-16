@@ -85,12 +85,19 @@ Service account has to be created for Terraform to give it the credentials to re
   
   *7.3* Actions -> Manage keys -> Create new key (JSON)
   
-  *7.4* add export... CONTINUE FROM HERE
+  *7.4* From the command line of your PC, set the path to json to interact with GCP from local machine:
   
-To add generated json file to the server, one can use `sftp`: 
+  ```sh
+  export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
 
-```sh
-sftp de-zoomcamp #connect to the server
-mkdir .gc # create directory
-put de_project.json # copy json file
+  # Refresh token/session, and verify authentication
+  gcloud auth application-default login
+  ```
+  
+  *7.5* To add generated json file to the server, one can use `sftp`: 
+
+  ```sh
+  sftp de-zoomcamp #connect to the server
+  mkdir .gc # create directory
+  put de_project.json # copy json file
 
