@@ -72,7 +72,17 @@ Don't forget to unzip it next.
 Service account has to be created for Terraform to give it the credentials to required services in GCP.
 
   *7.1* Go to GCP -> IAM & Admin -> Service Account -> Create Service Account
-  *7.2* Follow the instructions and in the `Role` box choose `Viewer` and then choose `Done`
+  *7.2* Follow the instructions and in the `Role` box choose:
+  
+  ```sh
+  Viewer
+  Storage Admin
+  Storage Object Admin
+  BigQuery Admin
+  ```
+  
+  and then choose `Done`
+  
   *7.3* Actions -> Manage keys -> Create new key (JSON)
   *7.4* add export... CONTINUE FROM HERE
   
