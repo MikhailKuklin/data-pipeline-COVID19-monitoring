@@ -5,6 +5,8 @@ WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data
 
 ## Initial set up in Google Cloud Platform (GCP)
 
+First of all, download [SDK](https://cloud.google.com/sdk/docs/install-sdk) for local setup
+
 ### *Step 1* Create a new project in GCP (in https://console.cloud.google.com/)
 
 ### *Step 2* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
@@ -65,12 +67,37 @@ Choose Linux/Ubuntu version (AMD64 architecture), copy the link, and download to
 
 Don't forget to unzip it next.
 
-TODO Describe creating credentials json file for terraform
+### *Step 7* GCP setup for Terraform
 
-To add generated json file to the server, one can use `sftp`: 
+Service account has to be created for Terraform to give it the credentials to required services in GCP.
 
-```sh
-sftp de-zoomcamp #connect to the server
-mkdir .gc # create directory
-put de_project.json # copy json file
+  *7.1* Go to GCP -> IAM & Admin -> Service Account -> Create Service Account
+  *7.2* Follow the instructions and in the `Role` box choose:
+  
+  ```sh
+  Viewer
+  Storage Admin
+  Storage Object Admin
+  BigQuery Admin
+  ```
+  
+  and then choose `Done`
+  
+  *7.3* Actions -> Manage keys -> Create new key (JSON)
+  
+  *7.4* From the command line of your PC, set the path to json to interact with GCP from local machine:
+  
+  ```sh
+  export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
+
+  # Refresh token/session, and verify authentication
+  gcloud auth application-default login
+  ```
+  
+  *7.5* To add generated json file to the server, one can use `sftp`: 
+
+  ```sh
+  sftp de-zoomcamp #connect to the server
+  mkdir .gc # create directory
+  put de_project.json # copy json file
 
