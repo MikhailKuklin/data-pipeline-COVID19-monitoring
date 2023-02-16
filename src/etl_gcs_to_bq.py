@@ -19,6 +19,7 @@ def extract_from_gcs() -> Path:
 def transform(path: Path) -> pd.DataFrame:
     """Data cleaning"""
     df = pd.read_parquet(path)
+    df = df[df['continent'].notna()] # remove NaNs continents
     return df
 
 @task()
