@@ -95,3 +95,11 @@ Service account has to be created for Terraform to give it the credentials to re
   sftp de-zoomcamp #connect to the server
   mkdir .gc # create directory
   put de_project.json # copy json file
+  
+  ## Prefect setup
+  
+  TODO
+  
+  ## dbt cloud setup
+  
+  To setup dbt cloud with Big Query, follow detailed instructions from [this guideline] (https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
