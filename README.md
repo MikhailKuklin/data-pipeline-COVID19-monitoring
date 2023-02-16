@@ -84,6 +84,7 @@ Service account has to be created for Terraform to give it the credentials to re
   and then choose `Done`
   
   *7.3* Actions -> Manage keys -> Create new key (JSON)
+  
   *7.4* add export... CONTINUE FROM HERE
   
 To add generated json file to the server, one can use `sftp`: 
