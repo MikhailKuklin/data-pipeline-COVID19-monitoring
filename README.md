@@ -5,7 +5,7 @@ WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data
 
 ## Initial set up in Google Cloud Platform (GCP)
 
-First of all, download [SDK] (https://cloud.google.com/sdk/docs/install-sdk) for local setup
+First of all, download [SDK](https://cloud.google.com/sdk/docs/install-sdk) for local setup
 
 ### *Step 1* Create a new project in GCP (in https://console.cloud.google.com/)
 
