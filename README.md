@@ -8,6 +8,9 @@ WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data
 
 This repo includes implementation of a simple pipeline for visualization of COVID19 data.
 
+
+![Dashboard](images/dashboard_example.png)
+
 To run it, one has to read and follow instructions from [prerequisites_readme first](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md).
 
 Next, install packages from requirements file TODO!
