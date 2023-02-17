@@ -30,6 +30,7 @@ def write_bq(df: pd.DataFrame) -> None:
 
     df.to_gbq(
         destination_table=f"covid19.covid_data",
+        location = 'europe-west6',
         project_id="prime-framing-374716",
         credentials=gcp_credentials_block.get_credentials_from_service_account(),
         chunksize=500_000,
