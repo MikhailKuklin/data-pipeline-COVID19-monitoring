@@ -119,6 +119,11 @@ python make_gcp_block.py
 python make_gh_block.py
 ```
 
+For GCP credentials, one should already have the json file. For GCS, service account has to be created in GCP:
+
+1. IAM & Admin/Service Accounts
+2. Role: BigQuery Admin, Storage Admin
+
 *Step 10* dbt cloud setup
   
 To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
