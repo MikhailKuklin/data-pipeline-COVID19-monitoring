@@ -26,8 +26,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 ## Reproducibility
 
 To run it, one has to read and follow instructions from [prerequisites_readme first](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md).
-
-Next, install packages from requirements file TODO!
+This instruction gives a detailed step-by-step guidelines for required configurations of the tools and services needed for the pipeline.
 
 Deploy Prefect stack and setup the schedule TODO!
 
