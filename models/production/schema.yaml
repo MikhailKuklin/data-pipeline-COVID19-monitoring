@@ -1,0 +1,6 @@
+version: 2
+
+models:
+
+    - name: prod_covid
+      description: >
