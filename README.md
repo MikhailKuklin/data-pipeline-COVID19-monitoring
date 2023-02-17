@@ -10,8 +10,8 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 
 ![Dashboard](images/dashboard_example.png)
 
-- [Goal](## Goal)
-- [Data source](## Data source)
+- [Goal](#Goal)
+- [Data source](#Data source)
 
 ## Goal
 
