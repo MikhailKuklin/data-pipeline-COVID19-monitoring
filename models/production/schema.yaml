@@ -2,5 +2,5 @@ version: 2
 
 models:
 
-    - name: prod_covid
+    - name: prod_covid2
       description: >
