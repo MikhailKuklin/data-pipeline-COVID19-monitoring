@@ -4,14 +4,13 @@
 
 WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data 
 
-![Project architecture](images/covid19_monitoring_architecture.png)
-
 This repo includes implementation of a pipeline for visualization of COVID19 data. Original idea of this pipeline is to have scheduled jobs with regularly updated table. 
 
 ![Dashboard](images/dashboard_example.png)
 
 - [Goal](#Goal)
 - [Data source](#Data-source)
+- [Description of architecture](#Description of architecture)
 
 ## Goal
 
@@ -22,6 +21,12 @@ Visualizing COVID19 data for a monitoring of the situation and identifying the t
 Data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 
 The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data).
+
+## Description of architecture
+
+![Project architecture](images/covid19_monitoring_architecture.png)
+
+
 
 ## Reproducibility
 
