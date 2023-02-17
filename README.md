@@ -1,4 +1,7 @@
 # covid19_monitoring
+
+![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg)
+
 WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data 
 
 ![Project architecture](images/covid19_monitoring_architecture.png)
