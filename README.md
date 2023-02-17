@@ -1,6 +1,6 @@
 # covid19_monitoring
 
-![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&kill_cache=1)
+![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&branch=main&kill_cache=1)
 
 WIP Data pipeline for uploading, preprocessing, and visualising COVID19 data 
 
