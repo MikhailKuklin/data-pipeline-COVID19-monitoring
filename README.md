@@ -16,7 +16,9 @@ Visualizing COVID19 data for a monitoring.
 
 ## Data source
 
-Data has been uploaded from [Our World in Data](https://github.com/owid/covid-19-data)
+Data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
+
+The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data).
 
 ## Reproducibility
 
