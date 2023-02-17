@@ -40,15 +40,34 @@ The implementation is limited by GCP usage. At the same time, implementation doe
 
 ## Reproducibility
 
-To run it, one has to read and follow instructions from [prerequisites_readme first](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md).
+1. One has to read with following instructions from [prerequisites_readme first](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md).
 This instruction gives a detailed step-by-step guidelines for required configurations of the tools and services needed for the pipeline.
 
-Deploy Prefect stack and setup the schedule TODO!
+2. Clone this repo to the VM
 
-Prefect jobs will move the data according to the schedule from the source to GCP first, clean and preprocess it, and then copy it to Big Query with creating the dataset with table there.
+3. Go to `infrastructure` folder and run:
 
-After that, go to dbt cloud and initialize the project there (follow the steps after finalizing the dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)).
+```sh
+terraform init
+terraform plan
+terraform apply
+```
 
-...
+Terraform will create required resources in GCP.
+
+4. Prefect !TODO!
+
+5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project and run:
+
+```sh
+dbt build --var 'is_test_run: False'
+```
+
+This command will build and execute SQL models and create gold layer table in Big Query.
+
+6. Follow first configuring insturctions for [Lookup Studio] (https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
+
+Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
+
 
 
