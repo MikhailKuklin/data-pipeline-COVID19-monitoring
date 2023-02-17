@@ -4,5 +4,6 @@
 
 Step 1. Choose 'Blank Report'
 
-Step 2. Under 'Google Connectors' choose BigQuery and follow the steps. On the final step, choose `prod_covid` table,
+Step 2. Under 'Google Connectors' choose BigQuery and follow the steps. On the final step, choose necessary table,
 
+Copy of the original dashboards without restricted access is located HERE and can be used as a template to reproduce the dashboard.
