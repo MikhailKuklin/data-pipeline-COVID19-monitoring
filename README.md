@@ -10,9 +10,12 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 
 ![Dashboard](images/dashboard_example.png)
 
+- [Goal](# Goal)
+- [Data source](# Data source)
+
 ## Goal
 
-Visualizing COVID19 data for a monitoring.
+Visualizing COVID19 data for a monitoring of the situation and identifying the trends.
 
 ## Data source
 
