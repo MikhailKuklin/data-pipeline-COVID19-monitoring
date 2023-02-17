@@ -97,6 +97,10 @@ Service account has to be created for Terraform to give it the credentials to re
   put de_project.json # copy json file
   ```
   
+  *Step 8* Install packages to the VM
+  
+  `pip install requirements.txt`
+  
   ## Prefect setup
   
   TODO
@@ -104,3 +108,5 @@ Service account has to be created for Terraform to give it the credentials to re
   ## dbt cloud setup
   
   To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
+  
+  
