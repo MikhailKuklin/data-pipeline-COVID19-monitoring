@@ -3,7 +3,7 @@ locals {
 }
 
 variable "project" {
-  description = "prime-framing-374716"
+  description = "prime-framing-374716" # project ID in GCP
 }
 
 variable "region" {
