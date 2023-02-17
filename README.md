@@ -26,7 +26,17 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ![Project architecture](images/covid19_monitoring_architecture.png)
 
+The source data (raw level) is originally in *csv* format and located in GitHub.
 
+Pipeline is implemented using Google Cloud Platform (GCP).
+
+The source data is partially cleaned, saved as a `parquet` file, and moved sequantially first to GCP bucket (Google Cloud Storage (GCS)) and then to Google Biq Query (silver layer). The whole process is orchestrated by Prefect.
+
+The silver layer data is next transformed by *dbt* for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. This data (gold layer) is ready for visualizations.
+
+Dashboard has been built from the gold layer data using Lookup Studio (previously Google Data Studio) which is synced with Big Query.
+
+The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team. 
 
 ## Reproducibility
 
