@@ -55,7 +55,7 @@ terraform apply
 
 Terraform will create required resources in GCP.
 
-4. Copy the data from the source to GCP using Prefect
+4. Copy the data from the source to GCP, preprocess it, and copy next to BQ using Prefect
 
 ```sh
 conda activate covid19
