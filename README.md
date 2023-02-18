@@ -11,6 +11,8 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 - [Goal](#Goal)
 - [Data source](#Data-source)
 - [Description of architecture](#Description-of-architecture)
+- [Reproducibility] (#Reproducibility)
+- [Improvements] (#Improvements)
 
 ## Goal
 
@@ -80,5 +82,6 @@ This command will build and execute SQL models and create gold layer table in Bi
 
 Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
 
+## Improvements
 
-
+Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
