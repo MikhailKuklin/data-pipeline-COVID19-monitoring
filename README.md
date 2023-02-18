@@ -60,8 +60,8 @@ Terraform will create required resources in GCP.
 ```sh
 conda activate covid19
 prefect cloud login # or ´prefect orion start` if you don't have or don't want to create an account
-prefect deployment build etl_web_to_gcs.py:etl_web_to_gcs -n 'COVID19 data to GCS' # creates deployment yaml file
-prefect deployment build etl_gcs_to_bq.py:etl_gcs_to_bq -n 'COVID19 data to BQ' # creates deployment yaml file
+prefect deployment build etl_web_to_gcs.py:etl_web_to_gcs -n 'COVID19 data to GCS' --cron "0 9 * * *" -a # creates deployment yaml file and schedule it via CRON on 9 UTC time every day
+prefect deployment build etl_gcs_to_bq.py:etl_gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
 ```
 
 5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project and run:
