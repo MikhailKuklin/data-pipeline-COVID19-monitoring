@@ -64,6 +64,8 @@ prefect deployment build etl_web_to_gcs.py:etl_web_to_gcs -n 'COVID19 data to GC
 prefect deployment build etl_gcs_to_bq.py:etl_gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
 ```
 
+[Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
+
 5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project and run:
 
 ```sh
