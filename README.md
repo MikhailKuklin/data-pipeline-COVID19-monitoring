@@ -11,8 +11,8 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 - [Goal](#Goal)
 - [Data source](#Data-source)
 - [Description of architecture](#Description-of-architecture)
-- [Reproducibility] (#Reproducibility)
-- [Improvements] (#Improvements)
+- [Reproducibility](#Reproducibility)
+- [Improvements](#Improvements)
 
 ## Goal
 
