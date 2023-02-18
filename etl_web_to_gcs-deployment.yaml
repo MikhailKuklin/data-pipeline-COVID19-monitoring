@@ -1,0 +1,43 @@
+###
+### A complete description of a Prefect Deployment for flow 'etl-web-to-gcs'
+###
+name: COVID19 data to GCS
+description: The main ETL function
+version: 511739615b960e7309fbe3e3aa32bb6c
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule:
+  cron: 0 9 * * *
+  timezone: null
+  day_or: true
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-web-to-gcs
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: 967bf75c-0112-47b7-b7c7-58b026c2ee78
+  _block_document_name: anonymous-d4e8ed3b-e275-4086-ac49-f8506073641b
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage: null
+path: /home/mikhail/covid19_monitoring
+entrypoint: src/etl_web_to_gcs.py:etl_web_to_gcs
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
