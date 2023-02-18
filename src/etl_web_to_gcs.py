@@ -6,9 +6,9 @@ from random import randint
 from prefect.tasks import task_input_hash
 from datetime import timedelta
 
-@task()
+@task(retries=2)
 def fetch(dataset_url: str) -> pd.DataFrame:
-    """Read FHV data from web into pandas DataFrame"""
+    """Read data from web into pandas DataFrame"""
     df = pd.read_csv(dataset_url)
     return df
 
@@ -32,7 +32,7 @@ def write_local(df: pd.DataFrame, dataset_file: str) -> Path:
 @task()
 def write_gcs(path: Path) -> None:
     """Upload local parquet file to GCS"""
-    gcs_block = GcsBucket.load("prefect-gcs")
+    gcs_block = GcsBucket.load("covid-gcs")
     gcs_block.upload_from_path(from_path=path, to_path=path)
     return
 
