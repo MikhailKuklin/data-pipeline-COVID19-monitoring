@@ -62,6 +62,8 @@ conda activate covid19
 prefect cloud login # or ´prefect orion start` if you don't have or don't want to create an account
 prefect deployment build etl_web_to_gcs.py:etl_web_to_gcs -n 'COVID19 data to GCS' --cron "0 9 * * *" -a # creates deployment yaml file and schedule it via CRON on 9 UTC time every day
 prefect deployment build etl_gcs_to_bq.py:etl_gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
+tmux # it will allow to run prefect agent in the background when ssh connection will be closed
+prefect agent start -q 'default'
 ```
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
