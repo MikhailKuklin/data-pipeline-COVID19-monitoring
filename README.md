@@ -17,7 +17,8 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 ## Goal
 
 COVID19 has been affected our lives for quite long period of time already. It is important to regularly monitor the situation to avoid unexpected situations and be ready for actions beforehand. 
-This project builds the pipelines which updates the dashboard for monitoring COVID19 data. The dashboard is daily updated so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
+
+This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard is daily updated so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
 
 ## Data source
 
@@ -37,7 +38,7 @@ The source data (raw level) is originally in *csv* format and located in GitHub.
 
 Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect**.
 
-The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. This data (gold layer) is ready for the dashboard.
+The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
 
 Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
