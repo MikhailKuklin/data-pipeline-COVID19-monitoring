@@ -42,6 +42,8 @@ The silver layer data from the data warehouse is next transformed by **dbt** for
 
 Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
+Unit tests `(/tests)`have been written and integrated into CI/CD pipelines via GitHub Actions. 
+
 The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team. 
 
 ## Reproducibility
