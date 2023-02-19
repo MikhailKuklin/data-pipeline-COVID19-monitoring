@@ -76,15 +76,23 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project and run:
+5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to schedule a daily job, one has to first create **Environment**:
 
-```sh
-dbt build --var 'is_test_run: False'
-```
+In dbt Cloud UI, choose Deploy -> Environments:
 
-This command will build and execute SQL models and create gold layer table in Big Query.
+![](images/dbt_environment.png)
 
-6. Follow first configuring insturctions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
+Next, choose Deploy -> Jobs:
+
+![](images/dbt_jobs.png)
+![](images/dbt_jobs2.png)
+![](images/dbt_jobs3.png)
+
+Note that two threads are used as two models are run. Cron job is scheduled at 12.00 UTC time every day.
+
+This job will update gold layer table in Big Query with daily data.
+
+6. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
 
