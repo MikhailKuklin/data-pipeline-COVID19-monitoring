@@ -82,7 +82,7 @@ dbt build --var 'is_test_run: False'
 
 This command will build and execute SQL models and create gold layer table in Big Query.
 
-6. Follow first configuring insturctions for [Lookup Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
+6. Follow first configuring insturctions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
 
