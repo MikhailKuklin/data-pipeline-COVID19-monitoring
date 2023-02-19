@@ -16,13 +16,14 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 
 ## Goal
 
-Visualizing COVID19 data for a monitoring of the situation and identifying the trends.
+COVID19 has been affected our lives for quite long period of time already. It is important to regularly monitor the situation to avoid unexpected situations and be ready for actions beforehand. 
+This project builds the pipelines which updates the dashboard for monitoring COVID19 data. The dashboard is daily updated so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
 
 ## Data source
 
 Data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 
-The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data).
+The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated there.
 
 ## Description of architecture
 
@@ -30,13 +31,15 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 The source data (raw level) is originally in *csv* format and located in GitHub.
 
-Pipeline is implemented using Google Cloud Platform (GCP).
+**Batch pipeline** is implemented using Google Cloud Platform (**GCP**). There is no point to implement stream pipeline as the data is not a real-time.
 
-The source data is partially cleaned, saved as a `parquet` file, and moved sequantially first to GCP bucket (Google Cloud Storage (GCS)) and then to Google Biq Query (silver layer). The whole process is orchestrated by Prefect.
+**Terraform** is used as a IaC (Infrastructure as code) to create resources in GCP.
 
-The silver layer data is next transformed by *dbt* for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. This data (gold layer) is ready for visualizations.
+Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect**.
 
-Dashboard has been built from the gold layer data using Lookup Studio (previously Google Data Studio) which is synced with Big Query.
+The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. This data (gold layer) is ready for the dashboard.
+
+Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
 The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team. 
 
