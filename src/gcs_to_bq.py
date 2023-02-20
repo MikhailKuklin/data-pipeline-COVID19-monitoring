@@ -36,7 +36,7 @@ def write_bq(df: pd.DataFrame) -> None:
         project_id="prime-framing-374716",
         credentials=gcp_credentials_block.get_credentials_from_service_account(),
         chunksize=500_000,
-        if_exists="append",
+        if_exists="replace",
     )
 
 @flow()

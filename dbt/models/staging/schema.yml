@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+    - name: staging
+      database: prime-framing-374716
+      schema: covid19
+
+      # loaded_at_field: record_loaded_at
+      tables:
+        - name: covid_data
+         # freshness:
+           # error_after: {count: 6, period: hour}
+
+
+models:
+
+    - name: stg_covid
+      description: >
