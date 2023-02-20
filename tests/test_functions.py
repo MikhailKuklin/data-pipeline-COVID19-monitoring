@@ -1,5 +1,5 @@
 # test_my_script.py
-import src.web_to_gcs as web_to_gcs
+from src.web_to_gcs import *
 
 def test_fetch_exists():
     try:
