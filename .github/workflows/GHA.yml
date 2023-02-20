@@ -42,7 +42,7 @@ jobs:
     needs: Install-requirements
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
       - name: Run unit tests
         run: |
           pytest tests/
