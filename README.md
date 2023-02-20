@@ -9,6 +9,7 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 ![Dashboard](images/dashboard_example.png)
 
 - [Goal](#Goal)
+- [Content](#Content)
 - [Data source](#Data-source)
 - [Description of architecture](#Description-of-architecture)
 - [Reproducibility](#Reproducibility)
@@ -19,6 +20,16 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 COVID19 has been affected our lives for quite long period of time already. It is important to regularly monitor the situation to avoid unexpected situations and be ready for actions beforehand. 
 
 This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard is daily updated so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
+
+## Content
+
+`data`: [Data source](#Data-source)
+`dbt`: dbt files and folders 
+`images`: printscreens for Readme files
+`infrastructure`: Terraform files
+`scripts`: helper scripts
+`src`: source codes
+`test`: tests for the code
 
 ## Data source
 
