@@ -4,15 +4,7 @@ def test_fetch_exists():
     assert fetch is not None
 
 def test_clean_exists():
-    try:
-        func = getattr(web_to_gcs, 'clean')
-    except AttributeError:
-        func = None
-    assert func is not None
+    assert clean is not None
 
 def test_write_local_exists():
-    try:
-        func = getattr(web_to_gcs, 'write_local')
-    except AttributeError:
-        func = None
-    assert func is not None
+    assert write_local is not None
