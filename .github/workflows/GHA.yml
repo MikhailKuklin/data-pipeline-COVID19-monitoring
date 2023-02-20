@@ -26,6 +26,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+        # Add the following line to use Node.js 16
+        env:
+          RUNNER_TOOL_CACHE: /opt/hostedtoolcache
+          NODEJS_VERSION: 16.x
+          YARN_CACHE_FOLDER: /opt/hostedtoolcache/yarn
+
 
       - name: Install requirements
         run:
