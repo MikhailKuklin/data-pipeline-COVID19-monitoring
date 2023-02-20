@@ -37,12 +37,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-  Unit-tests:
-    name: Unit tests
-    needs: Install-requirements
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-python@v2
       - name: Run unit tests
         run: |
           pytest tests/
