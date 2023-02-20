@@ -24,11 +24,17 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 ## Content
 
 `data`: [Data source](#Data-source)
+
 `dbt`: dbt files and folders 
+
 `images`: printscreens for Readme files
+
 `infrastructure`: Terraform files
+
 `scripts`: helper scripts
+
 `src`: source codes
+
 `test`: tests for the code
 
 ## Data source
