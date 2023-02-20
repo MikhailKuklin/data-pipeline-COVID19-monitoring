@@ -7,4 +7,4 @@ def test_clean_exists():
     assert clean is not None
 
 def test_write_local_exists():
-    assert write_local is not None
+    assert write_nlocal is not None
