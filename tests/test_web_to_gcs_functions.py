@@ -11,5 +11,5 @@ def test_clean_exists():
 def test_write_local_exists():
     assert write_local is not None
     
-def test_write_gcs():
+def test_write_gcs_exists():
     assert write_gcs is not None
