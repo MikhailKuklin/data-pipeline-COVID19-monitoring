@@ -2,7 +2,7 @@
 
 #from src.web_to_gcs import fetch, clean, write_local, write_gcs
 
-from src.web_to_gcs import
+from src.web_to_gcs import *
 
 def test_fetch_exists():
     assert fetch is not None
