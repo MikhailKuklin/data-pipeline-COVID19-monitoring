@@ -6,7 +6,8 @@ Data pipeline for uploading, preprocessing, and visualising COVID19 data
 
 This repo includes implementation of a pipeline for visualization of COVID19 data. Original idea of this pipeline is to have scheduled jobs with regularly updated table. 
 
-[Dashboard](images/covid19.mp4)
+
+[![Watch the video]()(images/covid19.mp4)
 
 ![Dashboard](images/dashboard_example.png)
 
