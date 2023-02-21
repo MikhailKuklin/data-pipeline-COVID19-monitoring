@@ -8,6 +8,8 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 
 Original idea of this pipeline is to have scheduled jobs with regularly updated table. 
 
+Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48). Note that it will not be update after April 2023.
+
 ![Dashboard](images/covid19.gif)
 ![Dashboard - 7 last days](images/covid19_dashboard2.png)
 
