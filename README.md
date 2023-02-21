@@ -17,6 +17,7 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 - [Description of architecture](#Description-of-architecture)
 - [Reproducibility](#Reproducibility)
 - [Improvements](#Improvements)
+- [Tests](#Tests)
 
 ## Goal
 
@@ -38,7 +39,7 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 
 `/src`: source codes
 
-`/test`: tests for the code
+`/test`: [tests](#Tests) for the code
 
 ## Data source
 
@@ -119,3 +120,13 @@ Final dashboard is located here with `Viewer` mode. To get more detailed informa
 ## Improvements
 
 Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
+
+## Tests
+
+Two different kind of tests have been developed:
+
+(1) checking dataframe schema inside of Prefect flow
+
+(2) checking the consistency of the functions in the ´/src´ which are critical for running the pipeline.
+
+Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
