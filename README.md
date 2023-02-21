@@ -1,4 +1,4 @@
-# covid19_monitoring
+# Data pipeline for COVID19 monitoring
 
 ![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&branch=main&kill_cache=1)
 
