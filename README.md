@@ -18,8 +18,8 @@ Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6
 - [Data source](#Data-source)
 - [Description of architecture](#Description-of-architecture)
 - [Reproducibility](#Reproducibility)
-- [Improvements](#Improvements)
 - [Tests](#Tests)
+- [Improvements](#Improvements)
 
 ## Goal
 
@@ -119,10 +119,6 @@ This job will update gold layer table in Big Query with daily data.
 
 Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
 
-## Improvements
-
-Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
-
 ## Tests
 
 Two different kind of tests have been developed:
@@ -132,3 +128,7 @@ Two different kind of tests have been developed:
 (2) checking the consistency of the functions in the ´/src´ which are critical for running the pipeline.
 
 Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
+
+## Improvements
+
+Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
