@@ -10,7 +10,6 @@ with coviddata as (
 
 select 
     coviddata.date, 
-    coviddata.people_vaccinated,
     coviddata.new_cases as total_cases,
     coviddata.continent,
     coviddata.country
