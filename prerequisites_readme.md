@@ -2,7 +2,9 @@
 
 First of all, download [SDK](https://cloud.google.com/sdk/docs/install-sdk) for local setup
 
-### *Step 1* Create a new project in GCP (in https://console.cloud.google.com/)
+### *Step 1* Create a new project in GCP 
+
+Go to https://console.cloud.google.com/ and follow the instructions.
 
 ### *Step 2* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
 
