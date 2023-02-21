@@ -2,7 +2,7 @@
 
 ![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&branch=main&kill_cache=1)
 
-Data pipeline for uploading, preprocessing, and visualising COVID19 data 
+**Data pipeline for uploading, preprocessing, and visualising COVID19 data**
 
 This repo includes implementation of a pipeline for visualization of COVID19 data: all over the time and the last 7 days. 
 
