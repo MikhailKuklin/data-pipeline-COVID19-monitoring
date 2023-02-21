@@ -9,6 +9,7 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 Original idea of this pipeline is to have scheduled jobs with regularly updated table. 
 
 ![Dashboard](images/covid19.gif)
+![Dashboard - 7 last days](images/covid19_dashboard2.png)
 
 - [Goal](#Goal)
 - [Content](#Content)
