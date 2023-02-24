@@ -15,4 +15,5 @@ sources:
 models:
 
     - name: stg_covid
-      description: >
+      description: COVID19 table after selection of particular columns which might be interesting for dashboard. Schema is defined.
+      
