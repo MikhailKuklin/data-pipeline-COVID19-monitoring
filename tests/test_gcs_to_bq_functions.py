@@ -5,8 +5,8 @@ from src.gcs_to_bq import *
 def test_extract_from_gcs_exists():
     assert extract_from_gcs is not None
 
-def test_transform_exists():
-    assert transform is not None
+def test_fetch_exists():
+    assert fetch is not None
 
 def test_write_bq_exists():
     assert write_bq is not None
