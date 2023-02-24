@@ -117,7 +117,7 @@ This job will update gold layer table in Big Query with daily data.
 
 6. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
-Final dashboard is located here with `Viewer` mode. To get more detailed information on implementation of the dashboard, get detailed look at the copy of the production dashboard which the `Editor` mode.
+Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode.
 
 ## Tests
 
