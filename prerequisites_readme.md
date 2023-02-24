@@ -126,6 +126,8 @@ For GCP credentials, one should already have the json file. For GCS, service acc
 1. IAM & Admin/Service Accounts
 2. Role: BigQuery Admin, Storage Admin
 
+Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
+
 ## *Step 10* dbt cloud setup
   
 To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
