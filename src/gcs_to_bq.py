@@ -17,10 +17,9 @@ def extract_from_gcs() -> Path:
     return Path(f"../data/{gcs_path}")
 
 @task()
-def transform(path: Path) -> pd.DataFrame:
-    """Data cleaning"""
+def fetch(path: Path) -> pd.DataFrame:
+    """Read parquet from GCS"""
     df = pd.read_parquet(path)
-    df = df[df['continent'].notna()] # remove NaNs continents
     return df
 
 @task()
@@ -44,7 +43,7 @@ def gcs_to_bq(log_prints=True):
     """Main ETL flow to load data into Big Query"""
 
     path = extract_from_gcs()
-    df = transform(path)
+    df = fetch(path)
     write_bq(df)
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 # Data pipeline for COVID19 monitoring
 
-![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&branch=main&kill_cache=1)
+[![Tests](https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring/actions/workflows/GHA.yml/badge.svg)](https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring/actions/workflows/GHA.yml)
 
 **Data pipeline for uploading, preprocessing, and visualising COVID19 data using Google Cloud Platform**
 
@@ -51,7 +51,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ## Description of architecture
 
-![Project architecture](images/covid19_monitoring_architecture.png)
+![Project architecture](images/covid19_architecture.jpg)
 
 The source data (raw level) is originally in *csv* format and located in GitHub.
 
@@ -59,9 +59,11 @@ The source data (raw level) is originally in *csv* format and located in GitHub.
 
 **Terraform** is used as a IaC (Infrastructure as code) to create resources in GCP.
 
-Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect**.
+Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect** as a **daily scheduled jobs**.
 
-The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
+Pipeline follows so-called [medallion architecture](https://www.databricks.com/glossary/medallion-architecture) describing data as a bronze, silver, and gold layers.
+
+The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, select only necessary columns, and saving the resulted data as tables to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
 
 Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
@@ -118,8 +120,6 @@ This job will update gold layer table in Big Query with daily data.
 6. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. 
-
-Note that Looker Studio does not save the range of the dates and one has to choose the desired range on the dashboard ![Last 7 days](images/covid19_dashboard_7days.png)
 
 ## Tests
 

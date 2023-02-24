@@ -14,7 +14,7 @@ def fetch(dataset_url: str) -> pd.DataFrame:
 
 @task(log_prints=True)
 def clean(df=pd.DataFrame) -> pd.DataFrame:
-    """Preprocess dataset"""
+    """Clean dataset"""
     df.rename(columns={"location": "country"}, inplace=True)
     print(f"Shape of the dataframe before dropping duplicates: {df.shape}")
     df.drop_duplicates(inplace=True)
