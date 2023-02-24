@@ -51,7 +51,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ## Description of architecture
 
-![Project architecture](images/architecture.pdf)
+[Project architecture](images/architecture.pdf)
 
 The source data (raw level) is originally in *csv* format and located in GitHub.
 
