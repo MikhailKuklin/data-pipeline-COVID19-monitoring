@@ -119,7 +119,7 @@ This job will update gold layer table in Big Query with daily data.
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. 
 
-Note that Looker Studio does not save the range of the dates and one has to choose the desired range on the dashboard ![´Last 7 days´](images/covid19_dashboard_7days.png).
+Note that Looker Studio does not save the range of the dates and one has to choose the desired range on the dashboard ![**Last 7 days**](images/covid19_dashboard_7days.png).
 
 ## Tests
 
