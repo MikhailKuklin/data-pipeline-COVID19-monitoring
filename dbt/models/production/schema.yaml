@@ -22,4 +22,24 @@ models:
           tests:
             - not_null:
                 severity: error 
-            
+
+    - name: prod_covid_lastdays
+      description: >
+        COVID19 table 7 last days after selecting particular columns, cleaning and preprocessing. Ready for dashboard
+      
+      columns:
+        - name: total_cases
+          description: total cases of COVID19 but note that new_cases from the source date is used as total cases from there is basically sum on top of each other
+          tests:
+            - not_null:
+                severity: error
+          
+        - name: continent
+          tests:
+            - not_null:
+                severity: error      
+      
+        - name: country
+          tests:
+            - not_null:
+                severity: error 
