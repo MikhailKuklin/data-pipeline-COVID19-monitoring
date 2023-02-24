@@ -1,0 +1,40 @@
+###
+### A complete description of a Prefect Deployment for flow 'run-dbt-job-flow'
+###
+name: COVID19 data dbt job
+description: null
+version: b11c83da59955442bf8aaede7a02cac9
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule:
+  cron: 0 11 * * *
+  timezone: null
+  day_or: true
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: run-dbt-job-flow
+manifest_path: null
+storage: null
+path: /home/mikhail/covid19_monitoring/src
+entrypoint: trigger_dbt.py:run_dbt_job_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
