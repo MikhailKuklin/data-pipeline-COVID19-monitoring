@@ -63,7 +63,7 @@ Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, a
 
 Pipeline follows so-called [medallion architecture](https://www.databricks.com/glossary/medallion-architecture) describing data as a bronze, silver, and gold layers.
 
-The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, and saving the resulted data as a table to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
+The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, select only necessary columns, and saving the resulted data as tables to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
 
 Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
