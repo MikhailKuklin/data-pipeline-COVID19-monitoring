@@ -1,6 +1,6 @@
 # Data pipeline for COVID19 monitoring
 
-![GitHub Actions](https://github.com/MikhailKuklin/covid19_monitoring/actions/workflows/GHA.yml/badge.svg?&branch=main&kill_cache=1)
+[![Tests](https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring/actions/workflows/GHA.yml/badge.svg)](https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring/actions/workflows/GHA.yml)
 
 **Data pipeline for uploading, preprocessing, and visualising COVID19 data using Google Cloud Platform**
 
