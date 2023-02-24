@@ -11,6 +11,7 @@ with coviddata as (
 select 
     coviddata.date, 
     coviddata.new_cases as total_cases,
+    coviddata.new_cases_per_million as total_cases_per_million,
     coviddata.continent,
     coviddata.country
 
