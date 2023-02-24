@@ -113,7 +113,9 @@ Next, choose Deploy -> Jobs:
 ![](images/dbt_jobs2.png)
 ![](images/dbt_jobs3.png)
 
-Note that two threads are used as two models are run. Cron job is scheduled at 12.00 UTC time every day.
+Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
+
+`prefect deployment build trigger_dbt.py:run_dbt_job_flow -n 'COVID19 data dbt job' --cron "0 11 * * *" -a`
 
 This job will update gold layer table in Big Query with daily data.
 
