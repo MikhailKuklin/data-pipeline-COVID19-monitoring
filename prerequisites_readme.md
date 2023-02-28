@@ -119,6 +119,7 @@ The easiest way to do that, run the scripts by adding `json` keys:
 ```sh
 python make_gcp_block.py
 python make_gh_block.py
+python make_dbt_block.py
 ```
 
 For GCP credentials, one should already have the json file. For GCS, service account has to be created in GCP:
