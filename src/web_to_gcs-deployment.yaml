@@ -3,7 +3,7 @@
 ###
 name: COVID19 data to GCS
 description: The main ETL function
-version: 080ef2be2195a540bc765dc45b7bedc6
+version: beb050a54036ffce06e54d3c287c7960
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 tags: []
@@ -30,8 +30,8 @@ infrastructure:
 flow_name: web-to-gcs
 manifest_path: null
 storage: null
-path: /home/mikhail/covid19_monitoring
-entrypoint: src/web_to_gcs.py:web_to_gcs
+path: /home/mikhail/covid19_monitoring/src
+entrypoint: web_to_gcs.py:web_to_gcs
 parameter_openapi_schema:
   title: Parameters
   type: object
