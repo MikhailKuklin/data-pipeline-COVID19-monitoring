@@ -101,7 +101,7 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to schedule a daily job, one has to first create **Environment**:
+5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to create a job, one has to first create **Environment**:
 
 In dbt Cloud UI, choose Deploy -> Environments:
 
@@ -111,7 +111,6 @@ Next, choose Deploy -> Jobs:
 
 ![](images/dbt_jobs.png)
 ![](images/dbt_jobs2.png)
-![](images/dbt_jobs3.png)
 
 Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
 
@@ -135,4 +134,10 @@ Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
 
 ## Improvements
 
-Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
+- Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
+
+- Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
+
+- Within pipelines, there is a risk that one of the steps might fail and running other steps could be meaningless or sometimes even harmful. Ideally, steps in pipeline should be triggered based on the success of the previous one instead of the scheduled runs. Such triggers might be easily implemented in Prefect using ´Automations´ feature. However, because the pipeline is not complex and easy to debug, triggers automation can be avoided for now.
+
+![Automations in Prefect](images/prefect_automation.png)
