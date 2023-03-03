@@ -59,9 +59,9 @@ The source data (raw level) is originally in *csv* format and located in GitHub.
 
 **Terraform** is used as an IaC (Infrastructure as code) to create resources in GCP.
 
-Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect** as a **daily scheduled jobs**.
+Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moves sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect** as a **daily scheduled jobs**.
 
-Pipeline follows so-called [medallion architecture](https://www.databricks.com/glossary/medallion-architecture) describing data as a bronze, silver, and gold layers.
+Pipeline follows so-called [medallion architecture](https://www.databricks.com/glossary/medallion-architecture) describing data as bronze, silver, and gold layers.
 
 The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, select only necessary columns, and saving the resulted data as tables to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
 
