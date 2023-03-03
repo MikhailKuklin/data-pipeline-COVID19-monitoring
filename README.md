@@ -57,7 +57,7 @@ The source data (raw level) is originally in *csv* format and located in GitHub.
 
 **Batch pipeline** is implemented using Google Cloud Platform (**GCP**). There is no point to implement stream pipeline as the data is not a real-time.
 
-**Terraform** is used as a IaC (Infrastructure as code) to create resources in GCP.
+**Terraform** is used as an IaC (Infrastructure as code) to create resources in GCP.
 
 Pipeline partially cleans the source `csv` data, saves it as a `parquet` file, and moved sequantially first to a datalake, GCP bucket (Google Cloud Storage (**GCS**)) and then to a data warehouse, **Google Biq Query** (silver layer). The whole process is orchestrated by **Prefect** as a **daily scheduled jobs**.
 
