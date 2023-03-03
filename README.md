@@ -101,7 +101,7 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to schedule a daily job, one has to first create **Environment**:
+5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to create a job, one has to first create **Environment**:
 
 In dbt Cloud UI, choose Deploy -> Environments:
 
@@ -111,7 +111,6 @@ Next, choose Deploy -> Jobs:
 
 ![](images/dbt_jobs.png)
 ![](images/dbt_jobs2.png)
-![](images/dbt_jobs3.png)
 
 Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
 
