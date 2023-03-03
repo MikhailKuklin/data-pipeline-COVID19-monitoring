@@ -139,4 +139,4 @@ Due to the nature of the source dataset, the current implementation every time c
 
 Within pipelines, there is a risk that one of the steps might fail and running other steps could be meaningless or sometimes even harmful. Ideally, steps in pipeline should be triggered based on the success of the previous one instead of the scheduled runs. Such triggers might be easily implemented in Prefect using ´Automations´ feature. However, because the pipeline is not complex and easy to debug, triggers automation can be avoided for now.
 
-![Automations in Prefect](images/prefect_automations.png)
+![Automations in Prefect](images/prefect_automation.png)
