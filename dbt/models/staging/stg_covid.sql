@@ -1,4 +1,11 @@
-{{ config(materialized='view') }}
+{{ config(
+    materialized='view',
+    partition_by={
+      "field": "date",
+      "data_type": "timestamp",
+      "granularity": "day"
+    }
+)}}
 
 with coviddata as
 (
