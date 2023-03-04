@@ -10,7 +10,7 @@ from prefect_gcp import GcpCredentials
 @task(retries=3)
 def extract_from_gcs() -> Path:
     """Download data from GCS"""
-    gcs_path = f"data/covid-data.parquet"
+    gcs_path = f"../data/covid-data.parquet"
     #gcs_block = GcsBucket.load("prefect-gcs")
     gcs_block = GcsBucket.load("covid-gcs")
     gcs_block.get_directory(from_path=gcs_path, local_path=f"../data")
