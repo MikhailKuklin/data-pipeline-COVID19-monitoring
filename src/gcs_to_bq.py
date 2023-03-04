@@ -20,6 +20,7 @@ def extract_from_gcs() -> Path:
 def fetch(path: Path) -> pd.DataFrame:
     """Read parquet from GCS"""
     df = pd.read_parquet(path)
+    print(f"Shape of the dataframe: {df.shape}")
     return df
 
 @task()
