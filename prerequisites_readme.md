@@ -24,6 +24,8 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
   - E2, e2-standard-4 (4 vCPU, 16 GB memory) as series/machine type
   - Ubuntu 20.04 LTS, 30GB for Boot Disc
 
+NOTE that VM can be created using Terraform. If one prefers to do it via Terraform, follow first step 6.
+
 ### (Optional) *Step 4* Configure instance
 
   *4.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution)
@@ -37,7 +39,6 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
   ```
 
   *4.2* Create config file on the PC to config access to the server (to avoid command to enter the VM)
-
 
   Create a file ~/.ssh/config:
 
