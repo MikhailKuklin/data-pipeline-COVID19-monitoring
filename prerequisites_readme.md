@@ -51,7 +51,7 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
 
 ### *Step 5* Clone the repo
 
-`git clone URL`
+`git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
 ### *Step 6* Download Terraform 
 
