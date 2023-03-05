@@ -1,5 +1,5 @@
 locals {
-  data_lake_bucket = "dtc_data_lake2"
+  data_lake_bucket = "dtc_data_lake"
 }
 
 variable "project" {
@@ -22,4 +22,10 @@ variable "BQ_DATASET" {
   description = "BigQuery Dataset that raw data (from GCS) will be written to"
   type = string
   default = "covid"
+}
+
+variable "zone" {
+  description = "Region for VM"
+  type = string
+  default = "europe-west6-a"
 }
