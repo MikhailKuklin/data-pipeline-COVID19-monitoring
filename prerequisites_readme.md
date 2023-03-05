@@ -26,7 +26,7 @@ Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> 
 
 ### (Optional) *Step 4* Configure instance
 
-  *4.1* To simplify the process, it is suggested to install ![Anaconda package management](https://www.anaconda.com/products/distribution)
+  *4.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution)
 
   Go to the bottom of the page and choose version for Linux, x86 architecture (that's what has been chosen for VM instance):
 
