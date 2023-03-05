@@ -6,25 +6,25 @@ First of all, download [SDK](https://cloud.google.com/sdk/docs/install-sdk) for 
 
 Go to https://console.cloud.google.com/ and follow the instructions.
 
-### *Step 2* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
-
-For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
-
-For Windows, look for more details here: [Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
-
-Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
-
-### *Step 3* Create a virtual machine (VM) in GCP
+### *Step 2* Create a virtual machine (VM) in GCP
   
-  *3.1* Compute Engine -> VM instances -> enable Compute Engine API -> Create instance
+  *2.1* Compute Engine -> VM instances -> enable Compute Engine API -> Create instance
   
-  *3.2* In the creation process, choose:
+  *2.2* In the creation process, choose:
   
   - the most suitable region for your location (europe-north1-a in my case)
   - E2, e2-standard-4 (4 vCPU, 16 GB memory) as series/machine type
   - Ubuntu 20.04 LTS, 30GB for Boot Disc
 
 NOTE that VM can be created using Terraform. If one prefers to do it via Terraform, follow first step 6.
+
+### *Step 3* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
+
+For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
+
+For Windows, look for more details here: [Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
+
+Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
 
 ### (Optional) *Step 4* Configure instance
 
