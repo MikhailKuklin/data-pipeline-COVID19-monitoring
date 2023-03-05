@@ -88,6 +88,8 @@ terraform apply
 
 Terraform will create required resources in GCP.
 
+Note that if one want to create VM via Terraform, copy the files from `/with_vm` subfolders.
+
 4. Copy the data from the source to GCP, preprocess it, and copy next to BQ using Prefect
 
 ```sh
