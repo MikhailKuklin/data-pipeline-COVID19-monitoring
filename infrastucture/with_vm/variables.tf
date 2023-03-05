@@ -23,3 +23,13 @@ variable "BQ_DATASET" {
   type = string
   default = "covid"
 }
+
+variable "instance" {
+  type = string
+  default = "covid19_vm"
+}
+
+variable "machine_type" {
+  type = string
+  default = "n1-standard-1"
+}
