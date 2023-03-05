@@ -16,8 +16,6 @@ Go to https://console.cloud.google.com/ and follow the instructions.
   - E2, e2-standard-4 (4 vCPU, 16 GB memory) as series/machine type
   - Ubuntu 20.04 LTS, 30GB for Boot Disc
 
-NOTE that VM can be created using Terraform. If one prefers to do it via Terraform, follow first step 6.
-
 ### *Step 3* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
 
 For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
