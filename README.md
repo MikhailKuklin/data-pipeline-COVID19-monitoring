@@ -134,6 +134,8 @@ Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
 
 ## Improvements
 
+- VM in GCP can be created using Terraform. Now it is a manual procedure in GCP. 
+
 - Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
 
 - Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
