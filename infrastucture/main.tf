@@ -47,24 +47,3 @@ resource "google_bigquery_dataset" "dataset" {
   project    = var.project
   location   = var.region
 }
-
-resource "google_compute_instance" "instance" {
-  name         = "covid19-vm"
-  machine_type = "e2-custom-2-7936"
-  zone         = var.zone
-
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2004-lts"
-      size = 30
-    }
-  }
-
-  network_interface {
-    network    = "default"
-    subnetwork = "default"
-    access_config {
-      network_tier = "PREMIUM"
-    }
-  }
-}

@@ -51,7 +51,7 @@ resource "google_bigquery_dataset" "dataset" {
 resource "google_compute_instance" "instance" {
   name         = "covid19-vm"
   machine_type = "e2-custom-2-7936"
-  zone         = "europe-west6-a"
+  zone         = var.zone
 
   boot_disk {
     initialize_params {

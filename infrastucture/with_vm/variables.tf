@@ -33,3 +33,9 @@ variable "machine_type" {
   type = string
   default = "n1-standard-1"
 }
+
+variable "zone" {
+  description = "Region for VM"
+  type = string
+  default = "europe-west6-a"
+}
