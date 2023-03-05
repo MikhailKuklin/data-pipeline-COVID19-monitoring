@@ -136,7 +136,7 @@ Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
 
 ## Improvements
 
-- VM in GCP can be created using Terraform. Now it is a manual procedure in GCP. 
+- Simplify reproducibility by using more gsutil (creating service principals and adding json keys) and scripts.
 
 - Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
 
