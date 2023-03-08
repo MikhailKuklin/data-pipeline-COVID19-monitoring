@@ -165,21 +165,17 @@ To allow Prefect orchestrate the pipeline, one has to give permissions to Prefec
 
 ```sh
 GCP Bucket
-GitHub
 GCP Credentials
+dbt
 ```
 
 The easiest way to do that, run the scripts by adding `json` keys:
 ```sh
 python make_gcp_block.py
-python make_gh_block.py
 python make_dbt_block.py
 ```
 
-For GCP credentials, one should already have the json file. For GCS, service account has to be created in GCP:
-
-1. IAM & Admin/Service Accounts
-2. Role: BigQuery Admin, Storage Admin
+For GCP credentials, one should already have the json file (terraform.json).
 
 Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
 
