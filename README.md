@@ -91,7 +91,7 @@ Terraform will create required resources in GCP.
 4. Copy the data from the source to GCP, preprocess it, and copy next to BQ using Prefect
 
 ```sh
-conda activate covid19
+cd /src
 prefect cloud login # or ´prefect orion start` if you don't have or don't want to create an account
 prefect deployment build web_to_gcs.py:web_to_gcs -n 'COVID19 data to GCS' --cron "0 9 * * *" -a # creates deployment yaml file and schedule it via CRON on 9 UTC time every day
 prefect deployment build gcs_to_bq.py:gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
