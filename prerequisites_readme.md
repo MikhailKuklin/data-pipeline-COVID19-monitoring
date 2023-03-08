@@ -156,7 +156,12 @@ It is also possible to do it in GCP UI:
   
 ### *Step 8* Install packages to the VM
   
-  `pip install -r requirements.txt`
+```sh
+conda create -name covid_env
+conda activate covid_env
+conda install pip
+pip install -r requirements.txt
+```
   
 ### *Step 9* Prefect setup
   
