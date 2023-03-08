@@ -63,9 +63,64 @@ Choose Linux/Ubuntu version (AMD64 architecture), copy the link, and download to
 
 Don't forget to unzip it next.
 
+`unzip terraform_1.3.9_linux_amd64.zip`
+
+Confirm that Terraform is installed:
+
+`terraform -version`
+
+If it does not work for you, move terraform:
+
+`sudo mv terraform /usr/local/bin/`
+
 ### *Step 7* GCP setup for Terraform
 
 Service account has to be created for Terraform to give it the credentials to required services in GCP.
+
+Easiest option is to use cli:
+
+```sh
+gcloud auth login # OAuth to GCP
+gcloud config set account `ACCOUNT`
+gcloud iam service-accounts create terraform-iam --display-name "terraform-iam" # create service account for Terraform in GCP
+```
+
+Next, we have to define the roles:
+
+```sh
+gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
+```
+
+```sh
+gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
+```
+
+```sh
+gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
+```
+
+```sh
+gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.bigquery.admin"
+```
+
+Create JSON key:
+
+```sh
+mkdir .gc
+
+gcloud iam service-accounts keys create .gc/terraform.json --iam-account=terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com
+```
+
+Set the path to json to interact with GCP from local machine:
+
+```sh
+  export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
+
+  # Refresh token/session, and verify authentication
+  gcloud auth application-default login
+```
+
+It is also possible to do it in GCP UI:
 
   *7.1* Go to GCP -> IAM & Admin -> Service Account -> Create Service Account
   
