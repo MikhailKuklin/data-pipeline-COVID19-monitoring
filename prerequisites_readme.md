@@ -74,7 +74,7 @@ If it does not work for you, move terraform:
 ```sh
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
 cd data-pipeline-COVID19-monitoring
-conda create -name conda_env
+conda create -n conda-env
 conda install pip
 pip install -r requirements.txt
 ```
@@ -97,7 +97,7 @@ Next, we have to define the roles:
 gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
 gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
 gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
-gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.bigquery.admin"
+gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
 ```
 
 Create JSON key:
