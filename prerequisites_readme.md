@@ -47,7 +47,10 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
   wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 
   bash Anaconda3-2022.10-Linux-x86_64.sh
+  
+  source .bashrc
   ```
+
 *5.2* Download Terraform:
 
 [Link to Terraform](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
