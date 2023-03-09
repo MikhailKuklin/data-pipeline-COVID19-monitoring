@@ -16,7 +16,7 @@ Go to https://console.cloud.google.com/ and follow the instructions.
 
 ## *Step 3* Install Google SDK on you local machine
 
-Choose the compatible version for your OS: ![Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+Choose the compatible version for your OS: [Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
 
 ### *Step 3* Creating recources in GCP using Terraform from local machine
 
