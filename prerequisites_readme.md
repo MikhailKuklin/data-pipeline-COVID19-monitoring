@@ -104,7 +104,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 
 ### *Step 6* Necessary installations on the VM
 
- *5.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
+ *6.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
   ```sh
   wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
@@ -114,7 +114,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
   source .bashrc
   ```
 
- *5.2* Clone repo and install packages
+ *6.2* Clone repo and install packages
 
 ```sh
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
@@ -124,7 +124,7 @@ conda install pip
 pip install -r requirements.txt
 ```
 
-### *Step 6* Prefect setup
+### *Step 7* Prefect setup
   
 Run in the command line of VM `prefect orion start` that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
 
