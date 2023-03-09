@@ -145,7 +145,11 @@ python make_dbt_block.py
 
 For GCP credentials, one should already have the json file (terraform.json).
 
-Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
+Next, save the key and add it to make_gcp_block.py
+
+!NOTE: do not push to GitHub the script with your credentials inside
+
+To get the key for dbt, one has to follow step 9 first.
 
 ### *Step 9* dbt cloud setup
   
