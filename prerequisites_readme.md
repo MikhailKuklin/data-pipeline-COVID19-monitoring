@@ -14,17 +14,17 @@ FOr MacOS/Linux, if it does not work for you, move terraform: `sudo mv terraform
 
 Go to https://console.cloud.google.com/ and follow the instructions.
 
-## *Step 3* Install Google SDK on you local machine
+### *Step 3* Install Google SDK on you local machine
 
 Choose the compatible version for your OS: [Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
 
-### *Step 3* Creating recources in GCP using Terraform from local machine
+### *Step 4* Creating recources in GCP using Terraform from local machine
 
- *3.1* Clone repo
+ *4.1* Clone repo
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *3.2* Craete service account 
+ *4.2* Craete service account 
  
  It has to be created for Terraform to give it the credentials to required services in GCP
 
@@ -64,7 +64,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
     gcloud auth application-default login
   ```
 
- *3.3* Create resources
+ *4.3* Create resources
  
  NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `varaiabel "zone"`
  
@@ -77,7 +77,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
  Terraform will create virtual machine, google cloud storage bucker, and BigQuery dataset for you.
 
-### (Optional) *Step 4* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
+### (Optional) *Step 5* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
 
 In order to avoid typing the password to log in to the VM from the local machine, one can create ssh key on the local machine:
 
@@ -87,7 +87,7 @@ For Windows, look for more details here: [Create SSH Keys](https://cloud.google.
 
 Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
 
-### (Optional) *Step 5* ssh config on the local machine for the instance 
+### (Optional) *Step 6* ssh config on the local machine for the instance 
 
 Create config file on the PC to config access to the server (to avoid the full command to enter the VM)
 
@@ -102,9 +102,9 @@ Create a file ~/.ssh/config:
 
 Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it is: `ssh -i ~/.ssh/gcp de-zoomcamp`)
 
-### *Step 6* Necessary installations on the VM
+### *Step 7* Necessary installations on the VM
 
- *6.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
+ *7.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
   ```sh
   wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
@@ -114,7 +114,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
   source .bashrc
   ```
 
- *6.2* Clone repo and install packages
+ *7.2* Clone repo and install packages
 
 ```sh
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
@@ -124,7 +124,7 @@ conda install pip
 pip install -r requirements.txt
 ```
 
-### *Step 7* Prefect setup
+### *Step 8* Prefect setup
   
 Run in the command line of VM `prefect orion start` that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
 
@@ -147,7 +147,7 @@ For GCP credentials, one should already have the json file (terraform.json).
 
 Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
 
-## *Step 8* dbt cloud setup
+## *Step 9* dbt cloud setup
   
 To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
   
