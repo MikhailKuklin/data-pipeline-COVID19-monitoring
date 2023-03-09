@@ -1,20 +1,83 @@
 ## Initial set up in Google Cloud Platform (GCP)
 
-### *Step 1* Create a new project in GCP UI
+### *Step 1* Install Terraform on your local machine
+
+Choose version for your OS: [Link to Terraform](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
+
+Don't forget to unzip it next (MacOS/Linux): `unzip terraform_1.3.9_linux_amd64.zip`
+
+Confirm that Terraform is installed: `terraform -version`
+
+FOr MacOS/Linux, if it does not work for you, move terraform: `sudo mv terraform /usr/local/bin/`
+
+### *Step 2* Create a new project in GCP UI
 
 Go to https://console.cloud.google.com/ and follow the instructions.
 
-### *Step 2* Create a virtual machine (VM) in GCP UI
-  
-  *2.1* Compute Engine -> VM instances -> enable Compute Engine API -> Create instance
-  
-  *2.2* In the creation process, choose:
-  
-  - the most suitable region for your location (europe-north1-a in my case)
-  - E2, e2-standard-4 (4 vCPU, 16 GB memory) as series/machine type
-  - Ubuntu 20.04 LTS
+### *Step 3* Install Google SDK on you local machine
 
-### (Optional) *Step 3* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
+Choose the compatible version for your OS: [Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+
+### *Step 4* Creating recources in GCP using Terraform from local machine
+
+ *4.1* Clone repo
+ 
+ `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
+
+ *4.2* Craete service account 
+ 
+ It has to be created for Terraform to give it the credentials to required services in GCP
+
+ Easiest option is to use cli:
+
+  ```sh
+  gcloud auth login # OAuth 2 to GCP
+  gcloud config set account `ACCOUNT`
+  gcloud iam service-accounts create terraform-iam --display-name "terraform-iam" # create service account for Terraform in GCP
+  ```
+
+ Next, we have to define the roles:
+
+  ```sh
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
+  ```
+
+ NOTE that you have to change `covid19-monitoring-377519` on your project ID in GCP.
+
+ Create JSON key:
+
+  ```sh
+  mkdir .gc
+
+  gcloud iam service-accounts keys create .gc/terraform.json --iam-account=terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com
+  ```
+
+ Set the path to json to interact with GCP from local machine:
+
+  ```sh
+    export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
+
+    # Refresh token/session, and verify authentication
+    gcloud auth application-default login
+  ```
+
+ *4.3* Create resources
+ 
+ NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `varaiabel "zone"`
+ 
+ ```sh
+ cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
+ terraform init
+ terraform plan
+ terraform apply
+ ```
+
+ Terraform will create virtual machine, google cloud storage bucker, and BigQuery dataset for you.
+
+### (Optional) *Step 5* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
 
 In order to avoid typing the password to log in to the VM from the local machine, one can create ssh key on the local machine:
 
@@ -24,7 +87,7 @@ For Windows, look for more details here: [Create SSH Keys](https://cloud.google.
 
 Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
 
-### (Optional) *Step 4* ssh config for the instance
+### (Optional) *Step 6* ssh config on the local machine for the instance 
 
 Create config file on the PC to config access to the server (to avoid the full command to enter the VM)
 
@@ -39,9 +102,9 @@ Create a file ~/.ssh/config:
 
 Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it is: `ssh -i ~/.ssh/gcp de-zoomcamp`)
 
-### *Step 5* Necessary installations on the VM
+### *Step 7* Necessary installations on the VM
 
- *5.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
+ *7.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
   ```sh
   wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
@@ -51,25 +114,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
   source .bashrc
   ```
 
-*5.2* Download Terraform:
-
-[Link to Terraform](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
-
-`wget https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip`
-
-Don't forget to unzip it next.
-
-`unzip terraform_1.3.9_linux_amd64.zip`
-
-Confirm that Terraform is installed:
-
-`terraform -version`
-
-If it does not work for you, move terraform:
-
-`sudo mv terraform /usr/local/bin/`
-
- *5.3* Clone repo and install packages
+ *7.2* Clone repo and install packages
 
 ```sh
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
@@ -79,79 +124,7 @@ conda install pip
 pip install -r requirements.txt
 ```
 
-### *Step 6* GCP setup for Terraform
-
-Service account has to be created for Terraform to give it the credentials to required services in GCP.
-
-Easiest option is to use cli:
-
-```sh
-gcloud auth login # OAuth2 to GCP
-gcloud config set account `ACCOUNT`
-gcloud iam service-accounts create terraform-iam --display-name "terraform-iam" # create service account for Terraform in GCP
-```
-
-Next, we have to define the roles:
-
-```sh
-gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
-gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
-gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
-gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
-```
-
-Create JSON key:
-
-```sh
-mkdir .gc
-
-gcloud iam service-accounts keys create .gc/terraform.json --iam-account=terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com
-```
-
-Set the path to json to interact with GCP from local machine:
-
-```sh
-  export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
-
-  # Refresh token/session, and verify authentication
-  gcloud auth application-default login
-```
-
-Alternatively, it can be done in GCP UI:
-
-  *6.1* Go to GCP -> IAM & Admin -> Service Account -> Create Service Account
-  
-  *6.2* Follow the instructions and in the `Role` box choose:
-  
-  ```sh
-  Viewer
-  Storage Admin
-  Storage Object Admin
-  BigQuery Admin
-  ```
-  
-  and then choose `Done`
-  
-  *6.3* Actions -> Manage keys -> Create new key (JSON)
-  
-  *6.4* From the command line of your PC, set the path to json to interact with GCP from local machine:
-  
-  ```sh
-  export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
-
-  # Refresh token/session, and verify authentication
-  gcloud auth application-default login
-  ```
-  
-  *6.5* To add generated json file to the server, one can use `sftp`: 
-
-  ```sh
-  sftp de-zoomcamp #connect to the server
-  mkdir .gc # create directory
-  put de_project.json # copy json file
-  ```
-    
-### *Step 7* Prefect setup
+### *Step 8* Prefect setup
   
 Run in the command line of VM `prefect orion start` that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
 
@@ -164,6 +137,7 @@ dbt
 ```
 
 The easiest way to do that, run the scripts by adding `json` keys:
+
 ```sh
 python make_gcp_block.py
 python make_dbt_block.py
@@ -173,7 +147,7 @@ For GCP credentials, one should already have the json file (terraform.json).
 
 Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
 
-## *Step 8* dbt cloud setup
+### *Step 9* dbt cloud setup
   
 To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
   

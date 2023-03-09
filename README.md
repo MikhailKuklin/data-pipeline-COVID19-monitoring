@@ -76,19 +76,7 @@ The implementation is limited by GCP usage. At the same time, implementation doe
 1. One has to read with following instructions from [prerequisites_readme first](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md).
 This instruction gives a detailed step-by-step guidelines for required configurations of the tools and services needed for the pipeline.
 
-2. Clone this repo to the VM
-
-3. Go to `infrastructure` folder and run:
-
-```sh
-terraform init
-terraform plan
-terraform apply
-```
-
-Terraform will create required resources in GCP.
-
-4. Copy the data from the source to GCP, preprocess it, and copy next to BQ using Prefect
+2. On the virtual machine, run the following commands to deploy the pipelines:
 
 ```sh
 cd /src
@@ -101,7 +89,9 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-5. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). Initialize the project. Next, in order to create a job, one has to first create **Environment**:
+3. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). 
+
+Initialize the project. Next, in order to create a job, one has to first create **Environment**:
 
 In dbt Cloud UI, choose Deploy -> Environments:
 
@@ -118,7 +108,7 @@ Note that two threads are used as two models are run. Finally, create deployment
 
 This job will update gold layer table in Big Query with daily data.
 
-6. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
+4. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. Dashboard contains two pages for COVID19 visualizations: all over the time and the last 7 days. 
 
@@ -133,8 +123,6 @@ Two different kind of tests have been developed:
 Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
 
 ## Improvements
-
-- Simplify reproducibility by using more gsutil (creating service principals and adding json keys) and scripts.
 
 - Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
 
