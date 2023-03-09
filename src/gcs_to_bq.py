@@ -21,6 +21,7 @@ def fetch(path: Path) -> pd.DataFrame:
     """Read parquet from GCS"""
     df = pd.read_parquet(path)
     print(f"Shape of the dataframe: {df.shape}")
+    print(f"The latest date: {df['date'].max()}")
     return df
 
 @task()

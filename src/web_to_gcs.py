@@ -20,6 +20,7 @@ def clean(df=pd.DataFrame) -> pd.DataFrame:
     df.drop_duplicates(inplace=True)
     print(f"Shape of the dataframe after dropping duplicates: {df.shape}")
     print(f"columns: {df.dtypes}")
+    print(f"The latest date: {df['date'].max()}")
     return df
 
 @task()
