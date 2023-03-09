@@ -147,7 +147,7 @@ For GCP credentials, one should already have the json file (terraform.json).
 
 Next, save the key and add it to make_gcp_block.py (!NOTE: do not push to GitHub the script with your credentials inside)
 
-## *Step 9* dbt cloud setup
+### *Step 9* dbt cloud setup
   
 To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
   
