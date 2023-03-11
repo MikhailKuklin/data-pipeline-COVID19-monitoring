@@ -141,7 +141,7 @@ Next, save the key and add it to make_gcp_block.py
 
 !NOTE: do not push to GitHub the script with your credentials inside
 
-(Optional) ### *Step 9* dbt cloud setup
+### (Optional if not using dbt Core) *Step 9* dbt cloud setup
   
 In case if one is interested using [dbt Cloud version](https://www.getdbt.com/blog/introducing-dbt-cloud/) for having UI and more functionalities compared with dbt core, follow the instructions below.
 
