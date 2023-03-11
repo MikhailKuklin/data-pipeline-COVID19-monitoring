@@ -44,11 +44,11 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  This code will:
  
   ```sh
- create service account
- define the roles for service account using gsutil
- create json key for it
- save it in ../.gc folder
- set the path to json to interact with GCP from local machine
+ - create service account
+ - define the roles for service account using gsutil
+ - create json key for it
+ - save it in ../.gc folder
+ - set the path to json to interact with GCP from local machine
  ```
 
  Next, just run:
