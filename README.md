@@ -31,7 +31,7 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 
 `/data`: [Data source](#Data-source)
 
-`/dbt`: dbt files and folders 
+`src/dbt`: dbt files and folders 
 
 `/images`: printscreens for Readme files
 
