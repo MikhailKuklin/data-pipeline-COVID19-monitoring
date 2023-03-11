@@ -14,4 +14,5 @@ def dbt_transform():
         profiles_dir=dbt_path,
     ).run()
 
-dbt_transform()
+if __name__ == "main":
+    dbt_transform()
