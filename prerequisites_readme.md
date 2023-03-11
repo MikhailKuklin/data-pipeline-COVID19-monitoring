@@ -126,23 +126,20 @@ To allow Prefect orchestrate the pipeline, one has to give permissions to Prefec
 ```sh
 GCP Bucket
 GCP Credentials
-dbt
 ```
 
 The easiest way to do that, run the scripts by adding `json` keys:
 
 ```sh
+cd scripts/
 python make_gcp_block.py
-python make_dbt_block.py
 ```
 
-For GCP credentials, one should already have the json file (terraform.json).
+For GCP credentials, one should already have the json file (./gc/sa-iam.json).
 
 Next, save the key and add it to make_gcp_block.py
 
 !NOTE: do not push to GitHub the script with your credentials inside
-
-To get the key for dbt, one has to follow step 9 first.
 
 (Optional) ### *Step 9* dbt cloud setup
   
@@ -150,7 +147,16 @@ In case if one is interested using [dbt Cloud version](https://www.getdbt.com/bl
 
 *9.1* To setup dbt Cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
 
-*9.2* When you are in dbt Cloud, initialize the project. Next, in order to create a job, one has to first create **Environment**:
+*9.2* Create prefect-dbt block if you want to use Prefect
+
+Use ./gc/sa-iam.json key
+
+```sh
+cd scripts/
+python make_dbt_block.py
+```
+
+*9.3* When you are in dbt Cloud, initialize the project. Next, in order to create a job, one has to first create **Environment**:
 
 In dbt Cloud UI, choose Deploy -> Environments:
 
