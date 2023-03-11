@@ -33,16 +33,16 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
   ```sh
   gcloud auth login # OAuth 2 to GCP
   gcloud config set account `ACCOUNT`
-  gcloud iam service-accounts create terraform-iam --display-name "terraform-iam" # create service account for Terraform in GCP
+  gcloud iam service-accounts create sa-iam --display-name "sa-iam" # create service account for Terraform in GCP
   ```
 
  Next, we have to define the roles:
 
   ```sh
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
+  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
   ```
 
  NOTE that you have to change `covid19-monitoring-377519` on your project ID in GCP.
@@ -52,7 +52,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
   ```sh
   mkdir .gc
 
-  gcloud iam service-accounts keys create .gc/terraform.json --iam-account=terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com
+  gcloud iam service-accounts keys create .gc/sa-aim.json --iam-account=sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com
   ```
 
  Set the path to json to interact with GCP from local machine:
