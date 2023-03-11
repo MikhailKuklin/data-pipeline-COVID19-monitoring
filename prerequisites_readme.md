@@ -151,7 +151,25 @@ Next, save the key and add it to make_gcp_block.py
 
 To get the key for dbt, one has to follow step 9 first.
 
-### *Step 9* dbt cloud setup
+(Optional) ### *Step 9* dbt cloud setup
   
-To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
-  
+In case if one is interested using [dbt Cloud version](https://www.getdbt.com/blog/introducing-dbt-cloud/) for having UI and more functionalities compared with dbt core, follow the instructions below.
+
+*9.1* To setup dbt Cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
+
+*9.2* When you are in dbt Cloud, initialize the project. Next, in order to create a job, one has to first create **Environment**:
+
+In dbt Cloud UI, choose Deploy -> Environments:
+
+![](images/dbt_environment.png)
+
+Next, choose Deploy -> Jobs:
+
+![](images/dbt_jobs.png)
+![](images/dbt_jobs2.png)
+
+Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
+
+`prefect deployment build trigger_dbt.py:run_dbt_job_flow -n 'COVID19 data dbt job' --cron "0 11 * * *" -a`
+
+This job will update gold layer table in Big Query with daily data.
