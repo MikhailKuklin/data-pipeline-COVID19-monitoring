@@ -18,13 +18,13 @@ Go to https://console.cloud.google.com/ and follow the instructions.
 
 Choose the compatible version for your OS: [Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
 
-### *Step 4* Creating recources in GCP using Terraform from local machine
+### *Step 4* Creating resourses in GCP using Terraform from local machine
 
  *4.1* Clone repo
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Craete service account 
+ *4.2* Create service account 
  
  It has to be created for Terraform to give it the credentials to required services in GCP
 
@@ -32,41 +32,34 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
   ```sh
   gcloud auth login # OAuth 2 to GCP
-  gcloud config set account `ACCOUNT`
-  gcloud iam service-accounts create sa-iam --display-name "sa-iam" # create service account for Terraform in GCP
   ```
 
- Next, we have to define the roles:
+ Next, run ´create_service_account.sh´ by adding your project ID from GCP:
+ 
+ ```sh
+ cd data-pipeline-COVID19-monitoring/scripts
+ sh create_service_account.sh GCP_PROJECT_ID
+ ```
+ 
+ This code will:
+ 
+  ```sh
+ create service account
+ define the roles for service account using gsutil
+ create json key for it
+ save it in ../.gc folder
+ set the path to json to interact with GCP from local machine
+ ```
+
+ Next, just run:
 
   ```sh
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
-  ```
-
- NOTE that you have to change `covid19-monitoring-377519` on your project ID in GCP.
-
- Create JSON key:
-
-  ```sh
-  mkdir .gc
-
-  gcloud iam service-accounts keys create .gc/sa-aim.json --iam-account=sa-iam@covid19-monitoring-377519.iam.gserviceaccount.com
-  ```
-
- Set the path to json to interact with GCP from local machine:
-
-  ```sh
-    export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
-
-    # Refresh token/session, and verify authentication
     gcloud auth application-default login
   ```
 
  *4.3* Create resources
  
- NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `varaiabel "zone"`
+ NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `variable "zone"`
  
  ```sh
  cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
@@ -106,13 +99,13 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 
  *7.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
-  ```sh
-  wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+ ```sh
+ wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 
-  bash Anaconda3-2022.10-Linux-x86_64.sh
+ bash Anaconda3-2022.10-Linux-x86_64.sh
   
-  source .bashrc
-  ```
+ source .bashrc
+ ```
 
  *7.2* Clone repo and install packages
 
