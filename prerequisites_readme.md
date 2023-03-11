@@ -30,9 +30,9 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
  Easiest option is to use cli:
 
-  ```sh
-  gcloud auth login # OAuth 2 to GCP
-  ```
+ ```sh
+ gcloud auth login # OAuth 2 to GCP
+ ```
 
  Next, run ´create_service_account.sh´ by adding your project ID from GCP:
  
@@ -53,9 +53,9 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
  Next, just run:
 
-  ```sh
-    gcloud auth application-default login
-  ```
+ ```sh
+ gcloud auth application-default login
+ ```
 
  *4.3* Create resources
  
