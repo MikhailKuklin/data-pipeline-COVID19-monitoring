@@ -95,6 +95,7 @@ prefect agent start -q 'default'
 cd src/
 prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
 ```
+This job will update gold layer table in Big Query with daily data.
 
 4. Follow configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
