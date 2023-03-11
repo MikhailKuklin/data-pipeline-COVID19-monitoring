@@ -11,7 +11,6 @@ from prefect_gcp import GcpCredentials
 def extract_from_gcs() -> Path:
     """Download data from GCS"""
     gcs_path = f"../data/covid-data.parquet"
-    #gcs_block = GcsBucket.load("prefect-gcs")
     gcs_block = GcsBucket.load("covid-gcs")
     gcs_block.get_directory(from_path=gcs_path, local_path=f"../data")
     return Path(f"../data/{gcs_path}")
@@ -27,8 +26,6 @@ def fetch(path: Path) -> pd.DataFrame:
 @task()
 def write_bq(df: pd.DataFrame) -> None:
     """Write DataFrame to BiqQuery"""
-
-    #gcp_credentials_block = GcpCredentials.load("prefect-gcp-creds")
     gcp_credentials_block = GcpCredentials.load("covid-gcp-creds")
 
     df.to_gbq(
