@@ -113,6 +113,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
 cd data-pipeline-COVID19-monitoring
 conda create -n conda-env
+conda activate conda-env
 conda install pip
 pip install -r requirements.txt
 ```
