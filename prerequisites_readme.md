@@ -18,55 +18,48 @@ Go to https://console.cloud.google.com/ and follow the instructions.
 
 Choose the compatible version for your OS: [Download Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
 
-### *Step 4* Creating recources in GCP using Terraform from local machine
+### *Step 4* Creating resourses in GCP using Terraform from local machine
 
  *4.1* Clone repo
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Craete service account 
+ *4.2* Create service account 
  
  It has to be created for Terraform to give it the credentials to required services in GCP
 
  Easiest option is to use cli:
 
+ ```sh
+ gcloud auth login # OAuth 2 to GCP
+ ```
+
+ Next, run ´create_service_account.sh´ by adding your project ID from GCP:
+ 
+ ```sh
+ cd data-pipeline-COVID19-monitoring/scripts
+ sh create_service_account.sh GCP_PROJECT_ID
+ ```
+ 
+ This code will:
+ 
   ```sh
-  gcloud auth login # OAuth 2 to GCP
-  gcloud config set account `ACCOUNT`
-  gcloud iam service-accounts create terraform-iam --display-name "terraform-iam" # create service account for Terraform in GCP
-  ```
+ - create service account
+ - define the roles for service account using gsutil
+ - create json key for it
+ - save it in ../.gc folder
+ - set the path to json to interact with GCP from local machine
+ ```
 
- Next, we have to define the roles:
+ Next, just run:
 
-  ```sh
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/viewer"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.admin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"
-  gcloud projects add-iam-policy-binding covid19-monitoring-377519 --member="serviceAccount:terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com" --role="roles/bigquery.admin"
-  ```
-
- NOTE that you have to change `covid19-monitoring-377519` on your project ID in GCP.
-
- Create JSON key:
-
-  ```sh
-  mkdir .gc
-
-  gcloud iam service-accounts keys create .gc/terraform.json --iam-account=terraform-iam@covid19-monitoring-377519.iam.gserviceaccount.com
-  ```
-
- Set the path to json to interact with GCP from local machine:
-
-  ```sh
-    export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
-
-    # Refresh token/session, and verify authentication
-    gcloud auth application-default login
-  ```
+ ```sh
+ gcloud auth application-default login
+ ```
 
  *4.3* Create resources
  
- NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `varaiabel "zone"`
+ NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `variable "zone"`
  
  ```sh
  cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
@@ -106,13 +99,13 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 
  *7.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
-  ```sh
-  wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+ ```sh
+ wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 
-  bash Anaconda3-2022.10-Linux-x86_64.sh
+ bash Anaconda3-2022.10-Linux-x86_64.sh
   
-  source .bashrc
-  ```
+ source .bashrc
+ ```
 
  *7.2* Clone repo and install packages
 
@@ -120,6 +113,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
 cd data-pipeline-COVID19-monitoring
 conda create -n conda-env
+conda activate conda-env
 conda install pip
 pip install -r requirements.txt
 ```
@@ -133,25 +127,49 @@ To allow Prefect orchestrate the pipeline, one has to give permissions to Prefec
 ```sh
 GCP Bucket
 GCP Credentials
-dbt
 ```
 
 The easiest way to do that, run the scripts by adding `json` keys:
 
 ```sh
+cd scripts/
 python make_gcp_block.py
-python make_dbt_block.py
 ```
 
-For GCP credentials, one should already have the json file (terraform.json).
+For GCP credentials, one should already have the json file (./gc/sa-iam.json).
 
 Next, save the key and add it to make_gcp_block.py
 
 !NOTE: do not push to GitHub the script with your credentials inside
 
-To get the key for dbt, one has to follow step 9 first.
+### (Optional if not using dbt Core) *Step 9* dbt cloud setup
+  
+In case if one is interested using [dbt Cloud version](https://www.getdbt.com/blog/introducing-dbt-cloud/) for having UI and more functionalities compared with dbt core, follow the instructions below.
 
-### *Step 9* dbt cloud setup
-  
-To setup dbt cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
-  
+*9.1* To setup dbt Cloud with Big Query, follow detailed instructions from [this guideline](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md)
+
+*9.2* Create prefect-dbt block if you want to use Prefect
+
+Use ./gc/sa-iam.json key
+
+```sh
+cd scripts/
+python make_dbt_block.py
+```
+
+*9.3* When you are in dbt Cloud, initialize the project. Next, in order to create a job, one has to first create **Environment**:
+
+In dbt Cloud UI, choose Deploy -> Environments:
+
+![](images/dbt_environment.png)
+
+Next, choose Deploy -> Jobs:
+
+![](images/dbt_jobs.png)
+![](images/dbt_jobs2.png)
+
+Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
+
+`prefect deployment build trigger_dbt.py:run_dbt_job_flow -n 'COVID19 data dbt job' --cron "0 11 * * *" -a`
+
+This job will update gold layer table in Big Query with daily data.

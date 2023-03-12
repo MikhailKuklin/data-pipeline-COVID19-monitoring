@@ -10,6 +10,8 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48). Note that it will not be update after April 2023.
 
+Detailed description of the project without too deep focus on the tools is given in [the post on my personal page](https://mikhailkuklin.wordpress.com/data-pipeline-for-covid-19-data-dashboarding/) giving .
+
 ![Dashboard](images/covid19.gif)
 ![Dashboard - 7 last days](images/covid19_dashboard2.png)
 
@@ -31,7 +33,7 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 
 `/data`: [Data source](#Data-source)
 
-`/dbt`: dbt files and folders 
+`src/dbt`: dbt files and folders 
 
 `/images`: printscreens for Readme files
 
@@ -79,7 +81,7 @@ This instruction gives a detailed step-by-step guidelines for required configura
 2. On the virtual machine, run the following commands to deploy the pipelines:
 
 ```sh
-cd /src
+cd src/
 prefect cloud login # or ´prefect orion start` if you don't have or don't want to create an account
 prefect deployment build web_to_gcs.py:web_to_gcs -n 'COVID19 data to GCS' --cron "0 9 * * *" -a # creates deployment yaml file and schedule it via CRON on 9 UTC time every day
 prefect deployment build gcs_to_bq.py:gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
@@ -89,26 +91,15 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-3. After that, go to dbt cloud and follow the steps for dbt setup steps from [prerequisites_readme](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/prerequisites_readme.md)). 
+3. Deploy dbt core job for data transformation to Prefect:
 
-Initialize the project. Next, in order to create a job, one has to first create **Environment**:
-
-In dbt Cloud UI, choose Deploy -> Environments:
-
-![](images/dbt_environment.png)
-
-Next, choose Deploy -> Jobs:
-
-![](images/dbt_jobs.png)
-![](images/dbt_jobs2.png)
-
-Note that two threads are used as two models are run. Finally, create deployment with Prefect to run the job every day at 11 UTC time:
-
-`prefect deployment build trigger_dbt.py:run_dbt_job_flow -n 'COVID19 data dbt job' --cron "0 11 * * *" -a`
-
+```sh
+cd src/
+prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
+```
 This job will update gold layer table in Big Query with daily data.
 
-4. Follow first configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
+4. Follow configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. Dashboard contains two pages for COVID19 visualizations: all over the time and the last 7 days. 
 
