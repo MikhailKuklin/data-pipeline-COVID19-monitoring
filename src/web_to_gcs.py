@@ -19,6 +19,9 @@ def clean(df=pd.DataFrame) -> pd.DataFrame:
     print(f"Shape of the dataframe before dropping duplicates: {df.shape}")
     df.drop_duplicates(inplace=True)
     print(f"Shape of the dataframe after dropping duplicates: {df.shape}")
+    df['new_cases'] = df['new_cases'].fillna(0)
+    df['new_cases_per_million'] = df['new_cases_per_million'].fillna(0)
+    print(f"Shape of the dataframe after modifying columns: {df.shape}")
     print(f"columns: {df.dtypes}")
     print(f"The latest date: {df['date'].max()}")
     return df
