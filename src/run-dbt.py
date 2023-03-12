@@ -5,7 +5,7 @@ from prefect_dbt.cli.commands import DbtCliProfile, DbtCoreOperation
 
 @flow(log_prints=True)
 def dbt_transform():
-    dbt_path = "{os.getcwd()}/dbt"
+    dbt_path = f"{os.getcwd()}/dbt"
 
     dbt_op = DbtCoreOperation(
         commands=["dbt debug", "dbt run --var 'is_test_run: false'"],
