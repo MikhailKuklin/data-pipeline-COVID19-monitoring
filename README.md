@@ -103,7 +103,7 @@ This job will update gold layer table in Big Query with daily data.
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. Dashboard contains two pages for COVID19 visualizations: all over the time and the last 7 days. 
 
-If one want to reuse the dashboards, the copy with `Editor` rights for public is located at [this link](https://lookerstudio.google.com/reporting/e9453200-efb9-409b-8c6f-d5eda5e091af). Please, create the copy of this dashboard in order to avoid direct changes in the file.
+If one want to reuse the dashboards, the copy with `Editor` mode for public is located at [this link](https://lookerstudio.google.com/reporting/e9453200-efb9-409b-8c6f-d5eda5e091af). Please, create the copy of this dashboard in order to avoid direct changes in the file.
 
 NOTE that starting from 08-03-2023, the data source of [Our World in Data](https://ourworldindata.org/coronavirus) has been changed and the data is updated on weekly basis intstead of daily.
 
