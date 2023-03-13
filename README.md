@@ -91,12 +91,21 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-3. Deploy dbt core job for data transformation to Prefect:
+3. Deploy dbt core job for data transformation to Prefect and update:
+
+First, update the following fields in `src/dbt/profiles.yaml`:
+
+```sh
+keyfile # give the path .gc/sa-iam.json
+project # PROJECT_ID from GCP
+location # if needed
+```
 
 ```sh
 cd src/
 prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
 ```
+
 This job will update gold layer table in Big Query with daily data.
 
 4. Follow configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
