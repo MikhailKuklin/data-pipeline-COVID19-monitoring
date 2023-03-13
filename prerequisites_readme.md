@@ -129,7 +129,7 @@ GCP Bucket
 GCP Credentials
 ```
 
-The easiest way to do that, run the script by copying `json` key (data-pipeline-COVID19-monitoring/.gc/sa-iam.json ON YOUR LOCAL MACHINE) and adding it to the script:
+Run the script by copying and adding `json` key (data-pipeline-COVID19-monitoring/.gc/sa-iam.json ON YOUR LOCAL MACHINE) to `make_gcp_block.py` and changing `project_id`:
 
 ```sh
 cd scripts/
