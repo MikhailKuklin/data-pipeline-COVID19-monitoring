@@ -24,7 +24,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Add your Project ID from GCP to `env` file
+ *4.2* Add your GCP `Project_ID` (if needed, also `Region` and `ZONE`) to `env` file
 
  *4.3* Create service account 
  
@@ -36,10 +36,11 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  gcloud auth login # OAuth 2 to GCP
  ```
 
- Next, run ´create_service_account.sh´ by adding your project ID from GCP:
+ Next, run `create_service_account.sh` by adding your project ID from GCP:
  
  ```sh
  cd data-pipeline-COVID19-monitoring/scripts
+ source ../env
  sh create_service_account.sh
  ```
  
@@ -60,9 +61,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  ```
 
  *4.4* Create resources
- 
- NOTE that you need to add your variables on `env` file first (at least `PROJECT_ID` and perhaps region):
- 
+  
  ```sh
  cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
  source ../../env
@@ -73,34 +72,12 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
  Terraform will create virtual machine, google cloud storage bucker, and BigQuery dataset for you.
 
-### (Optional) *Step 5* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
 
-In order to avoid typing the password to log in to the VM from the local machine, one can create ssh key on the local machine:
+### *Step 5* Necessary installations on the VM
 
-For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
+Go to VM in GCP:
 
-For Windows, look for more details here: [Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
-
-Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
-
-### (Optional) *Step 6* ssh config on the local machine for the instance 
-
-Create config file on the PC to config access to the server (to avoid the full command to enter the VM)
-
-Create a file ~/.ssh/config:
-
-  ```sh
-  Host de-zoomcamp # name of the VM
-        Hostname 35.228.114.109 # external IP of the VM
-        User mikhail # user name which was used to generate the ssh key
-        IdentityFile ~/.ssh/gcp # path to the ssh key. Note that it has to be absolute path for Windows
-  ```
-
-Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it is: `ssh -i ~/.ssh/gcp de-zoomcamp`)
-
-### *Step 7* Necessary installations on the VM
-
- *7.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
+ *5.1* To simplify the process, it is suggested to install [Anaconda package management](https://www.anaconda.com/products/distribution):
 
  ```sh
  wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
@@ -110,7 +87,7 @@ Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it i
  source .bashrc
  ```
 
- *7.2* Clone repo and install packages
+ *5.2* Clone repo and install packages
 
 ```sh
 git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git
@@ -121,11 +98,13 @@ conda install pip
 pip install -r requirements.txt
 ```
 
-### *Step 8* Prefect setup
+### *Step 6* Prefect setup
   
-Run in the command line of VM `prefect orion start` that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
+*6.1* Run in the command line of VM `prefect orion start`
 
-To allow Prefect orchestrate the pipeline, one has to give permissions to Prefect to access other services. For that, one has to set up `Blocks` in Prefect. The blocks have to be created for:
+It that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
+
+*6.2* To allow Prefect orchestrate the pipeline, one has to give permissions to Prefect to access other services. For that, one has to set up `Blocks` in Prefect. The blocks have to be created for:
 
 ```sh
 GCP Bucket
@@ -140,6 +119,31 @@ python make_gcp_block.py
 ```
 
 !NOTE: do not push to GitHub the script with your credentials inside
+
+### (Optional) *Step 7* Create and upload to GCP a ssh key to log in to the VM in GCP without typing a password
+
+In order to avoid typing the password to log in to the VM from the local machine, one can create ssh key on the local machine:
+
+For Linix and MacOS: `ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048` (key is generated in ~/.ssh)
+
+For Windows, look for more details here: [Create SSH Keys](https://cloud.google.com/compute/docs/connect/create-ssh-keys)
+
+Next, copy and upload the public ssh key to GCP: Go to GCP -> Compute Engine -> Metadata -> SSH Keys -> Add SSH Key
+
+### (Optional) *Step 8* ssh config on the local machine for the instance 
+
+Create config file on the PC to config access to the server (to avoid the full command to enter the VM)
+
+Create a file ~/.ssh/config:
+
+  ```sh
+  Host de-zoomcamp # name of the VM
+        Hostname 35.228.114.109 # external IP of the VM
+        User mikhail # user name which was used to generate the ssh key
+        IdentityFile ~/.ssh/gcp # path to the ssh key. Note that it has to be absolute path for Windows
+  ```
+
+Now it is possible to ssh to the VM by typing: `ssh de-zoomcamp` (otherwise it is: `ssh -i ~/.ssh/gcp de-zoomcamp`)
 
 ### (Optional if not using dbt Core) *Step 9* dbt cloud setup
   
