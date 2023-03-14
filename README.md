@@ -10,7 +10,7 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48). Note that it will not be update after April 2023.
 
-Detailed description of the project without too deep focus on the tools is given in [the post on my personal page](https://mikhailkuklin.wordpress.com/data-pipeline-for-covid-19-data-dashboarding/) giving .
+Detailed description of the project without too deep focus on the tools is given in [the post on my personal page](https://mikhailkuklin.wordpress.com/data-pipeline-for-covid-19-data-dashboarding/).
 
 ![Dashboard](images/covid19.gif)
 ![Dashboard - 7 last days](images/covid19_dashboard2.png)
@@ -42,6 +42,8 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 `/scripts`: helper scripts
 
 `/src`: source codes
+
+`env`: file with environmental variables
 
 `/test`: [tests](#Tests) for the code
 
