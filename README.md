@@ -95,6 +95,7 @@ prefect agent start -q 'default'
 
 ```sh
 cd src/
+source ../env
 prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
 ```
 
