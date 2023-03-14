@@ -87,8 +87,8 @@ This instruction gives a detailed step-by-step guidelines for required configura
 ```sh
 cd src/
 prefect cloud login # or ´prefect orion start` if you don't have or don't want to create an account
-prefect deployment build web_to_gcs.py:web_to_gcs -n 'COVID19 data to GCS' --cron "0 9 * * *" -a # creates deployment yaml file and schedule it via CRON on 9 UTC time every day
-prefect deployment build gcs_to_bq.py:gcs_to_bq -n 'COVID19 data to BQ' --cron "0 10 * * *" -a # creates deployment yaml file and schedule it via CRON on 10 UTC time every day
+prefect deployment build web_to_gcs.py:web_to_gcs -n 'COVID19 data to GCS' --cron "0 15 * * 4" -a # creates deployment yaml file and schedule it via CRON on 15.00 every Thu
+prefect deployment build gcs_to_bq.py:gcs_to_bq -n 'COVID19 data to BQ' --cron "0 16 * * 4" -a # creates deployment yaml file and schedule it via CRON on 16.00 every Thu
 tmux # it will allow to run prefect agent in the background when ssh connection will be closed
 prefect agent start -q 'default'
 ```
@@ -100,10 +100,10 @@ prefect agent start -q 'default'
 ```sh
 cd src/
 source ../env
-prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
+prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 17 * * 4" -a # # creates deployment yaml file and schedule it via CRON on 17.00 every Thu
 ```
 
-This job will update gold layer table in Big Query with daily data.
+This job will update gold layer table in Big Query with weekly data.
 
 4. Follow configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
