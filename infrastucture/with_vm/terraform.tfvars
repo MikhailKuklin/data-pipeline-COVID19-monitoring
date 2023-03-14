@@ -2,5 +2,5 @@
 project = "${var.PROJECT_ID}"
 
 # Terraform
-zone = "${var.VM_ZONE}"
+zone = "${var.ZONE}"
 region = "${var.REGION}"
