@@ -111,8 +111,6 @@ Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab
 
 If one want to reuse the dashboards, the copy with `Editor` mode for public is located at [this link](https://lookerstudio.google.com/reporting/e9453200-efb9-409b-8c6f-d5eda5e091af). Please, create the copy of this dashboard in order to avoid direct changes in the file.
 
-NOTE that starting from 08-03-2023, the data source of [Our World in Data](https://ourworldindata.org/coronavirus) has been changed and the data is updated on weekly basis intstead of daily.
-
 ## Tests
 
 Two different kind of tests have been developed:
