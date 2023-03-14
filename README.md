@@ -53,7 +53,7 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 
 Data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 
-The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated there.
+The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which was daily updated there until 08-03-2023 (the source was Johns Hopkins University). Johns Hopkins University stopped providing some metrics and the source was changed to the World Health Organization (WHO) from 08-03-2023. However, the data is updated on weekly basis (each Thu).
 
 ## Description of architecture
 
