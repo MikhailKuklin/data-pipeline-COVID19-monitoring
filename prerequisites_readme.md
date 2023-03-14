@@ -61,7 +61,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
 
  *4.4* Create resources
  
- NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `variable "zone"`
+ NOTE that you need to add your variables on `env` file first (at least `PROJECT_ID` and perhaps region):
  
  ```sh
  cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
