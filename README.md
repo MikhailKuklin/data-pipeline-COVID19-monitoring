@@ -12,6 +12,8 @@ Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6
 
 Detailed description of the project without too deep focus on the tools is given in [the post on my personal page](https://mikhailkuklin.wordpress.com/data-pipeline-for-covid-19-data-dashboarding/).
 
+>NOTE that starting from 08-03-2023, the data source of Our World in Data [has been changed](https://github.com/owid/covid-19-data/issues/2784) and the data is updated on weekly basis instead of daily (each Thu)
+
 ![Dashboard](images/covid19.gif)
 ![Dashboard - 7 last days](images/covid19_dashboard2.png)
 
