@@ -27,7 +27,6 @@ def fetch(path: Path) -> pd.DataFrame:
 def write_bq(df: pd.DataFrame) -> None:
     """Write DataFrame to BiqQuery"""
     gcp_credentials_block = GcpCredentials.load("covid-gcp-creds")
-
     df.to_gbq(
         destination_table=f"covid19.covid_data",
         location = 'europe-west6',
