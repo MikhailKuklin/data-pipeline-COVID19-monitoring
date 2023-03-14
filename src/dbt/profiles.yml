@@ -9,5 +9,5 @@ covid: # this needs to match the profile in your dbt_project.yml file
         dataset: production # Replace this with dbt_your_name, e.g. dbt_bilbo
         threads: 1
         timeout_seconds: 300
-        location: "{{ env_var('ZONE') }}"
+        location: "{{ env_var('REGION') }}"
         priority: interactive
