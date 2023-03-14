@@ -16,6 +16,7 @@ with coviddata as (
 ) 
 
 select 
+    EXTRACT(YEAR FROM coviddata.date) as date_year, -- extract the year from the date column
     coviddata.date, 
     coviddata.new_cases as total_cases,
     coviddata.new_cases_per_million as total_cases_per_million,
