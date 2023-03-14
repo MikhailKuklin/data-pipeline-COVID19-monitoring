@@ -1,1 +1,5 @@
-PROJECT_ID = #ADD YOUR GCP PROJECT ID
+PROJECT_ID = "covid19-repr-380012"
+REGION = "europe-west6"
+BQ_DATASET = "covid"
+VM_INSTANCE = "covid19_vm"
+VM_ZONE = "europe-west6-a"
