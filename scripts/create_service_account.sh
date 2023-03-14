@@ -1,12 +1,11 @@
 #!/bin/bash
 
-if [ -z "$1" ]
+if [ -z "$PROJECT_ID" ]
   then
-    echo "Project ID argument missing"
+    echo "Project ID environment variable missing"
     exit 1
 fi
 
-PROJECT_ID=$1
 
 # create roles for service account
 gcloud iam service-accounts create sa-iam --display-name "sa-iam" # create service account for Terraform in GCP
