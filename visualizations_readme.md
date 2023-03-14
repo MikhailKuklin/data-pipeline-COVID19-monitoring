@@ -4,6 +4,8 @@
 
 Step 1. Choose 'Blank Report'
 
-Step 2. Under 'Google Connectors' choose BigQuery and follow the steps. On the final step, choose necessary table,
+Step 2. Under 'Google Connectors' choose BigQuery and follow the steps. On the final step, choose necessary tables.
 
-Copy of the original dashboards without restricted access is located HERE and can be used as a template to reproduce the dashboard.
+Copy of the original dashboards without restricted access is located [here](https://lookerstudio.google.com/reporting/e9453200-efb9-409b-8c6f-d5eda5e091af) and can be used as a template to reproduce the dashboard. 
+
+In order to reuse it, please create a copy of this version and connect your data sources.

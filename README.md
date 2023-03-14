@@ -91,19 +91,30 @@ prefect agent start -q 'default'
 
 ![Prefect Cloud scheduled pipelines](images/prefect_deployment.png)
 
-3. Deploy dbt core job for data transformation to Prefect:
+3. Deploy dbt core job for data transformation to Prefect and update:
+
+First, update the following fields in `src/dbt/profiles.yaml`:
+
+```sh
+keyfile # give the path .gc/sa-iam.json
+project # PROJECT_ID from GCP
+location # if needed
+```
 
 ```sh
 cd src/
 prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 11 * * *" -a # # creates deployment yaml file and schedule it via CRON on 11 UTC time every day
 ```
+
 This job will update gold layer table in Big Query with daily data.
 
 4. Follow configuring instructions for [Looker Studio](https://github.com/MikhailKuklin/covid19_monitoring/blob/main/visualizations_readme.md)
 
 Final dashboard is located [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48) with `Viewer` mode. Dashboard contains two pages for COVID19 visualizations: all over the time and the last 7 days. 
 
-NOTE sometimes there is less than 7 last days in the dashboard which is due to the quality of the source data.
+If one want to reuse the dashboards, the copy with `Editor` mode for public is located at [this link](https://lookerstudio.google.com/reporting/e9453200-efb9-409b-8c6f-d5eda5e091af). Please, create the copy of this dashboard in order to avoid direct changes in the file.
+
+NOTE that starting from 08-03-2023, the data source of [Our World in Data](https://ourworldindata.org/coronavirus) has been changed and the data is updated on weekly basis intstead of daily.
 
 ## Tests
 
