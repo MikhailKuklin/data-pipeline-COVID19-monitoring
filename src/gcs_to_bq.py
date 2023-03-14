@@ -1,5 +1,4 @@
-# execure from src folder
-
+import os
 from pathlib import Path
 import pandas as pd
 from prefect import flow, task
@@ -30,7 +29,7 @@ def write_bq(df: pd.DataFrame) -> None:
     df.to_gbq(
         destination_table=f"covid19.covid_data",
         location = 'europe-west6',
-        project_id="prime-framing-374716",
+        project_id=os.getenv("PROJECT_ID"),
         credentials=gcp_credentials_block.get_credentials_from_service_account(),
         chunksize=500_000,
         if_exists="replace",
