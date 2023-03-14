@@ -24,7 +24,9 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Create service account 
+ *4.2* Add your Project ID from GCP to `env` file
+
+ *4.3* Create service account 
  
  It has to be created for Terraform to give it the credentials to required services in GCP
 
@@ -38,7 +40,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  
  ```sh
  cd data-pipeline-COVID19-monitoring/scripts
- sh create_service_account.sh GCP_PROJECT_ID
+ sh create_service_account.sh
  ```
  
  This code will:
@@ -57,7 +59,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  gcloud auth application-default login
  ```
 
- *4.3* Create resources
+ *4.4* Create resources
  
  NOTE that you need to change in `variables.tf` at least `variable "project"` and perhaps `variable "region"` and `variable "zone"`
  
