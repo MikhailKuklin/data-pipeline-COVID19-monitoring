@@ -29,7 +29,7 @@ Detailed description of the project without too deep focus on the tools is given
 
 COVID19 has been affected our lives for quite long period of time already. It is important to regularly monitor the situation to avoid unexpected situations and be ready for actions beforehand. 
 
-This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard was daily updated until 08-03-2023 and weekly from 08-03-2023 so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
+This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard is updated regularly (daily until 08-03-2023 and weekly from 08-03-2023 due to the changes in data source) so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
 
 ## Content
 
