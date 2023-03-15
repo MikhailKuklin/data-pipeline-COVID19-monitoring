@@ -8,11 +8,13 @@ This repo includes implementation of a pipeline for visualization of COVID19 dat
 
 Original idea of this pipeline is to have scheduled jobs with regularly updated table. 
 
-Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48). Note that it will not be update after April 2023.
+Dashboard is available [here](https://lookerstudio.google.com/reporting/3aab8da6-770b-4877-96e1-e7db7f652e48). Note that it will not be updated after April 2023.
 
 Detailed description of the project without too deep focus on the tools is given in [the post on my personal page](https://mikhailkuklin.wordpress.com/data-pipeline-for-covid-19-data-dashboarding/).
 
+
 >NOTE that starting from 08-03-2023, the data source of Our World in Data [has been changed](https://github.com/owid/covid-19-data/issues/2784) and the data is updated on weekly basis instead of daily (each Thu)
+
 
 ![Dashboard](images/covid19.gif)
 ![Dashboard - 7 last days](images/covid19_dashboard2.png)
@@ -29,7 +31,9 @@ Detailed description of the project without too deep focus on the tools is given
 
 COVID19 has been affected our lives for quite long period of time already. It is important to regularly monitor the situation to avoid unexpected situations and be ready for actions beforehand. 
 
-This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard is updated regularly (daily until 08-03-2023 and weekly from 08-03-2023 due to the changes in data source) so that it is easy to control the situation. The dashboard can be easily customized e.g. for the country, period of time, months, etc.
+This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. The dashboard is updated regularly (daily until 08-03-2023 and weekly from 08-03-2023 due to the changes in data source) so that it is easy to control the situation. 
+
+The dashboard can be easily customized e.g. for the country, period of time, months, etc.
 
 ## Content
 
@@ -53,7 +57,9 @@ This project builds the pipeline which updates the dashboard for monitoring tota
 
 Data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 
-The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which was daily updated there until 08-03-2023 (the source was Johns Hopkins University). Johns Hopkins University stopped providing some metrics and the source was changed to the World Health Organization (WHO) from 08-03-2023. However, the data is updated on weekly basis (each Thu).
+The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which was daily updated until 08-03-2023 (the source was Johns Hopkins University). 
+
+Johns Hopkins University stopped providing some metrics and the source was changed to the World Health Organization (WHO) from 08-03-2023. The data is updated on weekly basis (each Thu).
 
 ## Description of architecture
 
