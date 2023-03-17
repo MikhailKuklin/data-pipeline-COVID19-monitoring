@@ -11,3 +11,4 @@ sqlalchemy==1.4.46
 pytest==7.1.2
 dbt-bigquery==1.4.2
 gcsfs
+python-dotenv
