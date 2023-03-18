@@ -24,3 +24,10 @@ select
     coviddata.country
 
  from coviddata
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  where date > (select max(date) from {{ this }})
+
+{% endif %}

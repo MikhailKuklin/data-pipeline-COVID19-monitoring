@@ -43,6 +43,13 @@ CAST(people_fully_vaccinated_per_hundred as INTEGER) as people_fully_vaccinated_
 
 from coviddata
 
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  where CAST(date as timestamp) > (select max(date) from {{ this }})
+
+{% endif %}
+
 {% if var('is_test_run', default=true) %}
 
   limit 100
