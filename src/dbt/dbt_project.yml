@@ -35,6 +35,7 @@ models:
   covid19_monitoring:
     # Applies to all files under models/example/
     staging:
-      materialized: view
-    core:
-      materialized: table
+      materialized: incremental
+    production:
+      materialized: incremental
+
