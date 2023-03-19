@@ -4,10 +4,10 @@ covid: # this needs to match the profile in your dbt_project.yml file
       dev:
         type: bigquery
         method: service-account
-        keyfile: /home/mikhail/covid19_monitoring/.keys/dbt.json # replace this with the full path to your keyfile
-        project: "{{ env_var('PROJECT_ID') }}" # Replace this with your project id
+        keyfile: PATH_TO_KEY # replace this with the full path to your keyfile
+        project: PROJECT_ID # Replace this with your project id
         dataset: production # Replace this with dbt_your_name, e.g. dbt_bilbo
         threads: 1
         timeout_seconds: 300
-        location: "{{ env_var('REGION') }}"
+        location: REGION
         priority: interactive
