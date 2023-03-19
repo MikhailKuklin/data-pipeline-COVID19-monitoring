@@ -108,8 +108,9 @@ prefect agent start -q 'default'
 ```sh
 cd src/
 source ../env
-sed -i "s/REGION/$REGION/g" dbt/profiles.yml # it will replace the region in dbt profile needed for dbt core
-sed -i "s/PROJECT_ID/$PROJECT_ID/g" dbt/profiles.yml # it will replace the project in dbt profile needed for dbt core
+sed -i "s/REGION/$REGION/g" dbt/profiles.yml # it will add the region to dbt profile needed for dbt core
+sed -i "s/PROJECT_ID/$PROJECT_ID/g" dbt/profiles.yml # it will add the project id to dbt profile needed for dbt core
+sed -i "s|PATH_TO_KEY|$(realpath ../.gc/sa-iam.json)|g" dbt/profiles.yml # it will add the path to the json key to dbt profile needed for dbt core 
 prefect deployment build run-dbt.py:dbt_transform -n 'dbt job' --cron "0 17 * * 4" -a # # creates deployment yaml file and schedule it via CRON on 17.00 every Thu
 ```
 
