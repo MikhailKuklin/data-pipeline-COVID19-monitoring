@@ -1,5 +1,5 @@
 {{ config(
-    materialized='incremental',
+    materialized='table',
     partition_by={
       "field": "date",
       "data_type": "timestamp",
@@ -22,5 +22,4 @@ select
 
  from coviddata
 
---WHERE date BETWEEN '2023-03-01' AND '2023-03-08'
-WHERE date >= CAST(DATE_SUB(CURRENT_DATE(), INTERVAL 8 DAY) AS TIMESTAMP)
+WHERE date >= CAST(DATE_SUB(CURRENT_DATE(), INTERVAL 11 DAY) AS TIMESTAMP)
