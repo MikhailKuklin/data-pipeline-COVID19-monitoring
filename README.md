@@ -77,6 +77,8 @@ Pipeline follows so-called [medallion architecture](https://www.databricks.com/g
 
 The silver layer data from the data warehouse is next transformed by **dbt** for configuring the schema, final cleaning, selecting only necessary columns, and saving the resulted data as tables to Big Query. The data is **partitioned** on the date as the date is later used for quering that optimizes the process. Because of the size of the data, the data was not clustered. This data (gold layer) is ready for the dashboard.
 
+dbt models used *incremental* configuration meaning that dbt transforms only the rows in the source data for the last week e.g. rows that have been created or updated since the last time dbt ran.
+
 Dashboard has been built from the gold layer data using **Looker Studio** (previously Google Data Studio) which is synced with Big Query.
 
 Unit tests `(/tests)`have been written and integrated into CI/CD pipelines via GitHub Actions. 
@@ -133,7 +135,7 @@ Tests (2) are integrated to CI/CD pipeline using GitHub Actions.
 
 - Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
 
-- Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because data lake and data warehouse already contain most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge, but in general, it is not a good practice.
+- Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because datalake already contains most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge and cost of the operation is very low, but in general, it is not a good practice.
 
 - Within pipelines, there is a risk that one of the steps might fail and running other steps could be meaningless or sometimes even harmful. Ideally, steps in pipeline should be triggered based on the success of the previous one instead of the scheduled runs. Such triggers might be easily implemented in Prefect using ´Automations´ feature. However, because the pipeline is not complex and easy to debug, triggers automation can be avoided for now.
 
