@@ -98,6 +98,16 @@ conda install pip
 pip install -r requirements.txt
 ```
 
+*5.3* Copy the json key from the laptop and save it to the VM
+
+The key for service principal was created earlier. Location on the personal laptop is ´data-pipeline-COVID19-monitoring/.gc/sa-iam.json´. Copy this key and save to the the same location in the VM. On the VM:
+
+```sh
+cd data-pipeline-COVID19-monitoring/
+mkdir .gc
+nano sa-iam.json # then add the full content of the key and save the file
+```
+
 ### *Step 6* Prefect setup
   
 *6.1* Run in the command line of VM `prefect orion start`
