@@ -63,8 +63,8 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  *4.4* Create resources
   
  ```sh
- cd data-pipeline-COVID19-monitoring/infrastructure/with_vm
- source ../../env
+ cd data-pipeline-COVID19-monitoring/infrastructure/
+ source ../env
  terraform init
  terraform plan -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
  terraform apply -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
