@@ -8,7 +8,7 @@ def dbt_transform():
     dbt_path = f"{os.getcwd()}/dbt"
 
     dbt_op = DbtCoreOperation(
-        commands=["dbt debug", "dbt run --var 'is_test_run: false'"],
+        commands=["dbt debug", "dbt build --var 'is_test_run: false'"],
         working_dir=dbt_path,
         project_dir=dbt_path,
         profiles_dir=dbt_path,
