@@ -24,7 +24,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Add your GCP `Project_ID` (if needed, also `Region` and `ZONE`) to `env` file
+ *4.2* Add your GCP `Project_ID` (if needed, also `Region` and `ZONE`) to `data-pipeline-COVID19-monitoring/env` file
 
  *4.3* Create service account 
  
@@ -66,8 +66,8 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  cd data-pipeline-COVID19-monitoring/infrastructure/
  source ../env
  terraform init
- terraform plan -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
- terraform apply -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
+ terraform plan -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=${ZONE}"
+ terraform apply -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=${ZONE}"
  ```
 
  Terraform will create virtual machine, google cloud storage bucker, and BigQuery dataset for you.
