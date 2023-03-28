@@ -105,6 +105,7 @@ The key for service principal was created earlier. Location on the personal lapt
 ```sh
 cd data-pipeline-COVID19-monitoring/
 mkdir .gc
+cd .gc
 nano sa-iam.json # then add the full content of the key and save the file
 ```
 
