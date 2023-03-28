@@ -28,7 +28,7 @@ def write_bq(df: pd.DataFrame) -> None:
     gcp_credentials_block = GcpCredentials.load("covid-gcp-creds")
     df.to_gbq(
         destination_table=f"covid19.covid_data",
-        location = 'europe-west6',
+        location = os.getenv("REGION"),
         project_id=os.getenv("PROJECT_ID"),
         credentials=gcp_credentials_block.get_credentials_from_service_account(),
         chunksize=500_000,
