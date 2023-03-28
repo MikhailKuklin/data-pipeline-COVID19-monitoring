@@ -24,7 +24,7 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  
  `git clone https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring.git`
 
- *4.2* Add your GCP `Project_ID` (if needed, also `Region` and `ZONE`) to `env` file
+ *4.2* Add your GCP `Project_ID` (if needed, also `Region` and `ZONE`) to `data-pipeline-COVID19-monitoring/env` file
 
  *4.3* Create service account 
  
@@ -66,8 +66,8 @@ Choose the compatible version for your OS: [Download Google Cloud SDK](https://c
  cd data-pipeline-COVID19-monitoring/infrastructure/
  source ../env
  terraform init
- terraform plan -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
- terraform apply -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=$($VM_ZONE)"
+ terraform plan -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=${ZONE}"
+ terraform apply -var "project=${PROJECT_ID}" -var "region=${REGION}" -var "zone=${ZONE}"
  ```
 
  Terraform will create virtual machine, google cloud storage bucker, and BigQuery dataset for you.
@@ -105,6 +105,7 @@ The key for service principal was created earlier. Location on the personal lapt
 ```sh
 cd data-pipeline-COVID19-monitoring/
 mkdir .gc
+cd .gc
 nano sa-iam.json # then add the full content of the key and save the file
 ```
 
@@ -112,7 +113,11 @@ nano sa-iam.json # then add the full content of the key and save the file
   
 *6.1* Run in the command line of VM `prefect orion start`
 
-It that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
+It that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account:
+
+```sh
+prefect cloud login
+```
 
 *6.2* To allow Prefect orchestrate the pipeline, one has to give permissions to Prefect to access other services. For that, one has to set up `Blocks` in Prefect. The blocks have to be created for:
 
