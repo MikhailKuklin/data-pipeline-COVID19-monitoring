@@ -113,7 +113,11 @@ nano sa-iam.json # then add the full content of the key and save the file
   
 *6.1* Run in the command line of VM `prefect orion start`
 
-It that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account.
+It that will start Prefect UI and go to the address given after execution of the command (`http://127.0.0.1:4200` in my case). Note that you also can use Prefect Cloud which will be forever connected to your account:
+
+```sh
+prefect cloud login
+```
 
 *6.2* To allow Prefect orchestrate the pipeline, one has to give permissions to Prefect to access other services. For that, one has to set up `Blocks` in Prefect. The blocks have to be created for:
 
