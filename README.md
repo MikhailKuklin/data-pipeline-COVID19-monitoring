@@ -16,7 +16,7 @@ Detailed description of the project without too deep focus on the tools is given
 >NOTE that starting from 08-03-2023, the data source of Our World in Data [has been changed](https://github.com/owid/covid-19-data/issues/2784) and the data is updated on weekly basis instead of daily (each Thu)
 
 
-![Dashboard](images/covid19.gif)
+![Dashboard](images/covid19_dashboard_video.gif)
 
 
 <img src="images/covid19_dashboard.png" alt="Dashboard - 7 last days" width="600" height="550">
