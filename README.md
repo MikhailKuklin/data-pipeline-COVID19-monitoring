@@ -18,6 +18,7 @@ Detailed description of the project without too deep focus on the tools is given
 
 ![Dashboard](images/covid19_dashboard_video.gif)
 
+<img src="images/covid19_dashboard_video.gif" alt="Dashboard - 7 last days" width="400" height="350">
 
 <img src="images/covid19_dashboard.png" alt="Dashboard - 7 last days" width="600" height="550">
 
